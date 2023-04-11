@@ -42,7 +42,7 @@ CREATE TABLE animals (
 CREATE TABLE imgs (
     animal_id int,
     img_id SERIAL,
-    binary_code bigint,
+    url varchar,
     CONSTRAINT pk_imgs PRIMARY KEY (img_id),
     CONSTRAINT fk_imgs_to_user FOREIGN KEY (animal_id) REFERENCES animals (animal_id)
 );

@@ -1,5 +1,5 @@
 <template>
-  <div class="book-container">
+  <div class="animal-container">
       <animal-card
       v-bind:animal="animals"
       v-for="animal in $store.state.animals"
@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 import AnimalCard from './AnimalCard.vue';
 
 export default {
@@ -20,7 +19,7 @@ export default {
 </script>
 
 <style>
-.book-container {
+.animal-container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;

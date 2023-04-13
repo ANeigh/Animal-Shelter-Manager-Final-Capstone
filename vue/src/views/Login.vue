@@ -25,6 +25,7 @@
 
 <script>
 import authService from "../services/AuthService";
+import HomeService from "../services/HomeService";
 
 export default {
   name: "login",
@@ -57,7 +58,19 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },methods: {
+    getPic(){
+      HomeService.pic().then(response => {
+        const imageUrl = response.request.responseURL;
+        const img = document.createElement("img");
+        img.src = imageUrl;
+        // document.body.appendChild(img);
+      })
     }
+  },
+  // created() {
+  //   this.getPic();
+  // }
   }
 };
 </script>
@@ -68,5 +81,13 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+.login {
+  background: mintcream;
+  background-image: url("https://cataas.com/cat");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
 }
 </style>

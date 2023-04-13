@@ -83,6 +83,7 @@ public class PetfinderService {
 
             for (JsonNode animalNode : animalsNode) {
                 AnimalDto animalDto = objectMapper.treeToValue(animalNode, AnimalDto.class);
+
                 JsonNode breedsNode = animalNode.path("breeds");
                 animalDto.setBreed(breedsNode.path("primary").asText());
 

@@ -1,17 +1,21 @@
 <template>
-  <div class="animal-container">
+    <section>
+        <h1>Animals Available For Adoption</h1>
+    <div class="animal-container">
       <animal-card
-      v-bind:animal="animals"
+      v-bind:animal="animal"
       v-for="animal in $store.state.animals"
       v-bind:key="animal.id"      
-      >
+      />
   </div>
+    </section>
 </template>
 
 <script>
 import AnimalCard from './AnimalCard.vue';
 
 export default {
+    name: 'animal-list',
     components: {
         AnimalCard
     }
@@ -23,6 +27,7 @@ export default {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    background: white;
 }
 
 </style>

@@ -18,6 +18,32 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    animals: [
+      {
+        id: 1,
+        name: 'Sarge',
+        type: "Dog",
+        description: '',
+        age: 2,
+        gender: 'Male',
+        adopted: false,
+        breed: 'Good Boy',
+        color: 'tan',
+        url: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/62422186/3/?bust=1681147329&width=600'
+      },
+      {
+      id: 2,
+      name: 'Sarge',
+      type: "Dog",
+      description: '',
+      age: 2,
+      gender: 'Male',
+      adopted: false,
+      breed: 'Good Boy',
+      color: 'tan',
+      url: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/62422186/3/?bust=1681147329&width=600'
+    }
+    ],
     token: currentToken || '',
     user: currentUser || {}
   },

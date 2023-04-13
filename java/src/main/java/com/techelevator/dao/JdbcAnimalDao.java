@@ -1,13 +1,17 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Animal;
+import com.techelevator.model.AnimalDto;
+import com.techelevator.service.PetfinderService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Null;
+import javax.xml.crypto.Data;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +121,27 @@ public class JdbcAnimalDao implements AnimalDao{
         return animals;
     }
 
+//    @Override
+//    public void addListOfAnimals() throws SQLException, IOException {
+//        PetfinderService petfinderService = new PetfinderService();
+//
+//        List<AnimalDto> listOfAnimals = petfinderService.populateDB();
+//
+//        String sql = "INSERT INTO animal (animal_id, name, type, description, age, gender, adopted, breed, color," +
+//                "added_by) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//
+//
+//        for (AnimalDto animal : listOfAnimals) {
+//            try {
+//                jdbcTemplate.queryForObject(sql, Integer.class, animal.getName(),
+//                        animal.getType(), animal.getDescription(), animal.getAge(), animal.getAge(), animal.getGender(),
+//                        animal.isAdopted(), animal.getBreed(), animal.getColor(), animal.getAddedBy());
+//            } catch (DataAccessException | NullPointerException e) {
+//                throw new NullPointerException("Unable to create new Animal");
+//            }
+//        }
+//    }
+
     @Override
     public boolean updateAnimal(Animal animal) {
         boolean killMe = true;
@@ -130,7 +155,7 @@ public class JdbcAnimalDao implements AnimalDao{
         int animalId;
         try {
 
-            animalId = jdbcTemplate.queryForObject(sql, Integer.class, animal.getAnimal_id(), animal.getName(),
+            animalId = jdbcTemplate.queryForObject(sql, Integer.class, animal.getAnimalId(), animal.getName(),
                     animal.getType(), animal.getDescription(), animal.getAge(), animal.getAge(), animal.getGender(),
                     animal.isAdopted(), animal.getBreed(), animal.getColor(), animal.getAddedBy());
         } catch(DataAccessException | NullPointerException e) {
@@ -141,7 +166,7 @@ public class JdbcAnimalDao implements AnimalDao{
 
     private Animal mapRowToAnimal(SqlRowSet rs) {
         Animal animal = new Animal();
-        animal.setAnimal_id(rs.getInt("animal_id"));
+        animal.setAnimalId(rs.getInt("animal_id"));
         animal.setName(rs.getString("name"));
         animal.setType(rs.getString("type"));
         animal.setDescription(rs.getString("description"));

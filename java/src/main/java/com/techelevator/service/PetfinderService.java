@@ -1,11 +1,8 @@
 package com.techelevator.service;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import com.techelevator.model.AnimalDto;
@@ -15,19 +12,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import javax.net.ssl.HttpsURLConnection;
-import java.net.HttpURLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
 @Component
 public class PetfinderService {
@@ -35,7 +27,7 @@ public class PetfinderService {
 
     // this class will consume the Petfinder API to populate our SQL database
 
-    private static final String apiUrl = "https://api.petfinder.com/v2/animals?location=15221&distance=10";
+    private static  String apiUrl = "https://api.petfinder.com/v2/animals?location=15221&distance=10";
     private static URL API_BASE_URL;
     static {
         try {
@@ -50,6 +42,7 @@ public class PetfinderService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String getToken() {
+        //Acquire token from api using OAuthv2 protocol
         String urlencoded = "grant_type=client_credentials&client_id=" + API_KEY + "&client_secret=" + API_SECRET;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -59,42 +52,63 @@ public class PetfinderService {
     }
 
     public void populateDB() throws IOException, SQLException {
-
-        HttpsURLConnection connection = (HttpsURLConnection) API_BASE_URL.openConnection();
-        connection.setRequestProperty("Authorization", "Bearer " + getToken());
-        connection.setRequestMethod("GET");
-        int statusCode = connection.getResponseCode();
-        InputStream inputStream = statusCode < 400 ? connection.getInputStream() : connection.getErrorStream();
-        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-        String inputLine;
-        StringBuilder response = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-// assuming responseBody is the JSON data as a String
-        JsonNode rootNode = objectMapper.readTree(response.toString());
-        JsonNode animalsNode = rootNode.path("animals");
+        //Querying the API for animals
 
         List<AnimalDto> animalList = new ArrayList<>();
-        for (JsonNode animalNode : animalsNode) {
-            AnimalDto animalDto = objectMapper.treeToValue(animalNode, AnimalDto.class);
-            animalList.add(animalDto);
+        int page = 1;
+        boolean hasNextPage = true;
+        //while-loop to access data from every page of the JSON results using above int and boolean
+        while (hasNextPage) {
+            //dynamic url
+            URL apiPageUrl = new URL(apiUrl + "&page=" + page);
+            HttpsURLConnection connection = (HttpsURLConnection) apiPageUrl.openConnection();
+            //utilizing the above getToken() method to access the API
+            connection.setRequestProperty("Authorization", "Bearer " + getToken());
+            connection.setRequestMethod("GET");
+            int statusCode = connection.getResponseCode();
+            InputStream inputStream = statusCode < 400 ? connection.getInputStream() : connection.getErrorStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            String inputLine;
+            //building the json results into a string
+            StringBuilder response = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            //Reading the JSON from the API and converting it into Java AnimalDto Objects
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(response.toString());
+            JsonNode animalsNode = rootNode.path("animals");
+
+            for (JsonNode animalNode : animalsNode) {
+                AnimalDto animalDto = objectMapper.treeToValue(animalNode, AnimalDto.class);
+                JsonNode breedsNode = animalNode.path("breeds");
+                animalDto.setBreed(breedsNode.path("primary").asText());
+
+
+                JsonNode colorsNode = animalNode.path("colors");
+                animalDto.setColor(colorsNode.path("primary").asText());
+
+                animalList.add(animalDto);
+            }
+
+            JsonNode paginationNode = rootNode.path("pagination");
+            if (paginationNode.path("total_pages").asInt() == page) {
+                hasNextPage = false;
+            } else {
+                page++;
+            }
         }
 
+        //using jsoup to scrape website for full description
         for (AnimalDto animal : animalList) {
             animal.setDescription("d");
         }
 
-
+        //Connecting to the database and inserting the list of animals to the animals table
         Connection sqlConnection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/final_capstone",
                 "postgres", "postgres1");
-      //  PreparedStatement statement = sqlConnection.prepareStatement("INSERT INTO animals (animal_id, added_by," +
-        //        "name, type, description, age, gender, adopted, breed, color, tags) VALUES (DEFAULT, 1, ?, ?, ?, ?, ?," +
-        //        "?, ?, ?, ?)");
 
         PreparedStatement statement = sqlConnection.prepareStatement("INSERT INTO animals (added_by, name, type, description, age, gender, adopted, breed, color, tags) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -110,11 +124,5 @@ public class PetfinderService {
             statement.setString(9, animal.getTags());
             statement.executeUpdate();
         }
-    }
-
-    public void testGetToken() {
-        PetfinderService petfinderService = new PetfinderService();
-        String token = petfinderService.getToken();
-        assertNotNull(token);
     }
 }

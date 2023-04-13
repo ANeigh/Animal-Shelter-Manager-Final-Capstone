@@ -1,6 +1,8 @@
 <template>
   <div class="home">
+
     <NavBar />
+    <!-- <div>{{getPic()}}</div> -->
     <WelcomeBanner />
     <Social />
     <Carousel />
@@ -14,6 +16,7 @@ import WelcomeBanner from "../components/WelcomeBanner.vue";
 import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
+import HomeService from "../services/HomeService";
 
 export default {
   name: "home",
@@ -22,14 +25,32 @@ export default {
     WelcomeBanner,
     Social,
     Carousel,
-    Footer
+    Footer,
   },
+  methods: {
+    getPic(){
+      HomeService.pic().then(response => {
+        const imageUrl = response.request.responseURL;
+        const img = document.createElement("img");
+        img.src = imageUrl;
+        // document.body.appendChild(img);
+      })
+    }
+  },
+  created() {
+    this.getPic();
+  }
 };
-
 </script>
 <style>
-.home{
-  background : cadetblue;
-  background-image: url(../assets/BgImage.png);
+.home {
+  background: mintcream;
+  background-image: url("https://cataas.com/cat");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  
+  
 }
 </style>

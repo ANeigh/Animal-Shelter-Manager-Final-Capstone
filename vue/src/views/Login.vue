@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <form @submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <nav-bar />
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -19,17 +19,28 @@
       <button type="submit">Sign in</button>
       <p>
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <!-- <social/> -->
+      <pet-carousel />
+      <Footer />
     </form>
   </div>
 </template>
 
 <script>
+import Footer from '../components/Footer.vue';
+import NavBar from '../components/NavBar.vue';
+import PetCarousel from '../components/PetCarousel.vue';
+// import Social from '../components/Social.vue';
 import authService from "../services/AuthService";
 import HomeService from "../services/HomeService";
 
 export default {
   name: "login",
   components: {
+    NavBar,
+    // Social,
+    PetCarousel,
+    Footer,
   },
   data() {
     return {
@@ -68,26 +79,27 @@ export default {
       })
     }
   },
-  // created() {
-  //   this.getPic();
-  // }
+  created() {
+    this.getPic();
+  }
   }
 };
 </script>
 
 <style scoped>
+#login {
+  background-image: url("https://cataas.com/cat");
+  background-size: cover;
+  background-position: center;
+  padding:24rem;
+}
 .form-input-group {
+  
   margin-bottom: 1rem;
+  
 }
 label {
   margin-right: 0.5rem;
 }
-.login {
-  background: mintcream;
-  background-image: url("https://cataas.com/cat");
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-}
+
 </style>

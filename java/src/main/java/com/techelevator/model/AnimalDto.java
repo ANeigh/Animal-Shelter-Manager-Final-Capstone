@@ -15,9 +15,7 @@ public class AnimalDto {
     private String age;
     private String gender;
     private boolean adopted;
-    @JsonAlias({"breeds.primary"})
     private String breed;
-    @JsonAlias({"colors.primary"})
     private String color;
     private String[] tags;
     private String url;
@@ -101,5 +99,13 @@ public class AnimalDto {
 
     public void setTags(String[] tags) {
         this.tags = tags;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

@@ -1,10 +1,8 @@
 <template>
   <div class="home">
-
+    
     <NavBar />
-    <!-- <div>{{getPic()}}</div> -->
-    <WelcomeBanner />
-    <Social />
+    <!-- <Social /> -->
     <Carousel />
     <Footer />
   </div>
@@ -12,8 +10,7 @@
 
 <script>
 import NavBar from "../components/NavBar";
-import WelcomeBanner from "../components/WelcomeBanner.vue";
-import Social from "../components/Social";
+// import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
 import HomeService from "../services/HomeService";
@@ -22,8 +19,7 @@ export default {
   name: "home",
   components: {
     NavBar,
-    WelcomeBanner,
-    Social,
+    // Social,
     Carousel,
     Footer,
   },
@@ -48,9 +44,9 @@ export default {
   background-image: url("https://cataas.com/cat");
   background-size: cover;
   background-position: center;
-  width: 100%;
-  height: 100%;
-  
-  
+  padding:28rem;
+}
+.loginButton {
+  display: flex;
 }
 </style>

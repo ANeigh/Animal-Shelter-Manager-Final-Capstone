@@ -1,7 +1,10 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Animal;
+import com.techelevator.model.AnimalDto;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface AnimalDao {
@@ -21,6 +24,8 @@ public interface AnimalDao {
     List<Animal> getAnimalByColor(String color);
 
     List<Animal> getAnimalsByUserAdded(int addedBy);
+
+   // void addListOfAnimals() throws SQLException, IOException;
 
     boolean updateAnimal(Animal animal);
 

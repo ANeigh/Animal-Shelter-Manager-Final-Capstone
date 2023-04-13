@@ -2,7 +2,8 @@ package com.techelevator.model;
 
 public class Animal {
 
-    private int animal_id;
+    private int animalId;
+    private int addedBy = 1;
     private String name;
     private String type;
     private String description;
@@ -11,13 +12,14 @@ public class Animal {
     private boolean adopted;
     private String breed;
     private String color;
-    private int addedBy;
+    private String tags;
+
 
     public Animal () {}
 
     public Animal(int animal_id, String name, String type, String description, int age, String gender, boolean adopted,
-                  String breed, String color, int addedBy) {
-        this.animal_id = animal_id;
+                  String breed, String color, int addedBy, String tags) {
+        this.animalId = animal_id;
         this.name = name;
         this.type = type;
         this.description = description;
@@ -27,14 +29,15 @@ public class Animal {
         this.breed = breed;
         this.color = color;
         this.addedBy = addedBy;
+        this.tags = tags;
     }
 
-    public int getAnimal_id() {
-        return animal_id;
+    public int getAnimalId() {
+        return animalId;
     }
 
-    public void setAnimal_id(int animal_id) {
-        this.animal_id = animal_id;
+    public void setAnimalId(int animalId) {
+        this.animalId = animalId;
     }
 
     public String getName() {
@@ -109,10 +112,18 @@ public class Animal {
         this.addedBy = addedBy;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String toString() {
         return "Animal{" +
-                "id=" + animal_id +
+                "id=" + animalId +
                 "name=" + name +
                 "type=" + type +
                 "breed" + breed +

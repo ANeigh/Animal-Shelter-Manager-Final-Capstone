@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+    
     <form @submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
@@ -19,14 +20,17 @@
       </div>
       <button type="submit">Create Account</button>
       <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <nav-bar />
     </form>
   </div>
 </template>
 
 <script>
+import NavBar from '../components/NavBar.vue';
 import authService from '../services/AuthService';
 
 export default {
+  components: { NavBar },
   name: 'register',
   data() {
     return {
@@ -79,5 +83,16 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+.nav-bar{
+  display: flex;
+}
+
+.text-center {
+  background: mintcream;
+  background-image: url("https://cataas.com/cat");
+  background-size: cover;
+  background-position: center;
+  padding:28rem;
 }
 </style>

@@ -44,6 +44,17 @@ export default new Vuex.Store({
       url: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/62422186/3/?bust=1681147329&width=600'
     }
     ],
+    applications: [
+      {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        status: "",
+        username: "",         
+        password: ""
+      }
+    ],
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -63,6 +74,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    ADD_NEW_APP(state, newApp) {
+      state.applications.push(newApp);
     }
   }
 })

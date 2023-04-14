@@ -8,7 +8,7 @@
     <router-link class="navButtons" to="{name: 'list'}">Animal List</router-link>&nbsp;
     <router-link class="navButtons" to="{name: ''}">Adopted List</router-link>&nbsp;
     <router-link class="navButtons" to="{name: 'register'}">Volunteer Sign up</router-link>&nbsp;
-    <router-link class="navButtons" to="{name: ''}">Volunteer Directory</router-link>
+    <router-link class="navButtons" to="{name: 'volunteer'}">Volunteer Directory</router-link>
   </section>
 </template>
 

@@ -1,12 +1,16 @@
 <template>
   <section id="volunteer">
-    <h2>
+    <div>
+      <h2>
       <!-- Headline -->
     </h2>
     <p>
       <!-- Body text -->
     </p>
+    </div>
+    <div>
     <ApplicationForm />
+    </div>
   </section>
 </template>
 

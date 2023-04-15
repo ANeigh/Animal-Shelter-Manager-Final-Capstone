@@ -44,7 +44,7 @@ CREATE TABLE imgs (
     img_id SERIAL,
 	url varchar,
     CONSTRAINT pk_imgs PRIMARY KEY (img_id),
-    CONSTRAINT fk_imgs_to_user FOREIGN KEY (animal_id) REFERENCES animals (animal_id)
+    CONSTRAINT fk_imgs_to_user FOREIGN KEY (animal_id) REFERENCES animals (animal_id) ON DELETE cascade
 );
 
 COMMIT

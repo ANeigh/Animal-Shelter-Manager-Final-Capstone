@@ -1,5 +1,12 @@
 <template>
   <section class="nav">
+  
+    <div id="nav">
+      <router-link v-bind:to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>
+    </div>
+    <router-view />
+  
     <router-link to="/">
     <img class="WelcomePic" src="../assets/Job-AnimalShelter.png" />
     </router-link>
@@ -15,6 +22,11 @@
 <script>
 export default {
   name: "nav-bar",
+   computed: {
+    isLoggedIn() {
+      return !!this.$store.state.token;
+    }
+  }
 };
 </script>
 
@@ -23,15 +35,15 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: absolute;
-  top: 25px;
-  right: 5px;
+  position: fixed;
+  top: 0px;
   background-color: #a28f9d;
   border-top: 15px solid #2F0A28;
   border-bottom: 15px solid #2F0A28;
   border-left: 15px solid #2F0A28;
   border-right: 15px solid #2F0A28;
   border-radius: 10px;
+  z-index: 1; /* add a z-index to ensure navbar is in front of other elements */
 }
 .WelcomePic {
   display: flex;

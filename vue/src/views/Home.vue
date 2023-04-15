@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    
     <NavBar />
-    <!-- <Social /> -->
+    <Social />
     <Carousel />
     <Footer />
   </div>
@@ -10,43 +9,57 @@
 
 <script>
 import NavBar from "../components/NavBar";
-// import Social from "../components/Social";
+import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
-import HomeService from "../services/HomeService";
+// import HomeService from "../services/HomeService";
+import axios from 'axios';
 
 export default {
   name: "home",
   components: {
     NavBar,
-    // Social,
+    Social,
     Carousel,
     Footer,
   },
   methods: {
-    getPic(){
-      HomeService.pic().then(response => {
-        const imageUrl = response.request.responseURL;
-        const img = document.createElement("img");
-        img.src = imageUrl;
-        // document.body.appendChild(img);
-      })
-    }
+    // getPic(){
+    //   HomeService.pic().then(response => {
+    //     const imageUrl = response.request.responseURL;
+    //     const img = document.createElement("img");
+    //     img.src = imageUrl;
+    //     // document.body.appendChild(img);
+    //   })
+    // }
   },
   created() {
-    this.getPic();
+    axios.get("https://cataas.com/cat")
+      .then(response => {
+        this.imageUrls.push(response.request.responseURL);
+        return axios.get("https://cataas.com/cat");
+      })
   }
 };
 </script>
 <style>
 .home {
-  background: mintcream;
-  background-image: url("https://cataas.com/cat");
-  background-size: cover;
+ background-image: url("https://cataas.com/cat");
+  background-size: 100% 100%;
   background-position: center;
-  padding:28rem;
+  height: 100vh;
+  margin-top: 0px;
+  
 }
-.loginButton {
+/* .loginButton {
   display: flex;
-}
+} */
+.NavBar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0; 
+} 
+
+
 </style>

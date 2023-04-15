@@ -8,6 +8,9 @@ import store from '../store/index'
 import List from '../views/List.vue'
 import Volunteer from '../views/Volunteer.vue'
 import About from '../views/About.vue'
+import AnimalListView from '../views/AnimalListView'
+import AdoptedList from '../views/AdoptedList'
+import VolunteerList from '../views/VolunteerListView'
 
 Vue.use(Router)
 
@@ -79,7 +82,32 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/animallist",
+      name: "animallist",
+      component: AnimalListView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/adoptedlist",
+      name: "adoptedlist",
+      component: AdoptedList,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/volunteerlist",
+      name: "volunteerlist",
+      component: VolunteerList,
+      meta: {
+        requiresAuth: false
+      }
     }
+
   ]
 })
 

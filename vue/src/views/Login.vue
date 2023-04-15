@@ -38,7 +38,7 @@ import NavBar from "../components/NavBar.vue";
 import PetCarousel from "../components/PetCarousel.vue";
 import Social from "../components/Social.vue";
 import authService from "../services/AuthService";
-import HomeService from "../services/HomeService";
+
 
 export default {
   name: "login",
@@ -77,18 +77,10 @@ export default {
         });
     },
     methods: {
-      getPic() {
-        HomeService.pic().then((response) => {
-          const imageUrl = response.request.responseURL;
-          const img = document.createElement("img");
-          img.src = imageUrl;
-          // document.body.appendChild(img);
-        });
-      },
+      
     },
     created() {
-      this.getPic();
-    },
+    }
   },
 };
 </script>

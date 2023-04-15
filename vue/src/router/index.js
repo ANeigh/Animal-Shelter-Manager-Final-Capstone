@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import List from '../views/List.vue'
 import Volunteer from '../views/Volunteer.vue'
+import About from '../views/About.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/volunteer",
       name: "volunteer",
       component: Volunteer,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About,
       meta: {
         requiresAuth: false
       }

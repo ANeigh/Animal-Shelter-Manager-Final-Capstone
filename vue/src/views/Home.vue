@@ -12,8 +12,7 @@ import NavBar from "../components/NavBar";
 import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
-// import HomeService from "../services/HomeService";
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
   name: "home",
@@ -24,21 +23,9 @@ export default {
     Footer,
   },
   methods: {
-    // getPic(){
-    //   HomeService.pic().then(response => {
-    //     const imageUrl = response.request.responseURL;
-    //     const img = document.createElement("img");
-    //     img.src = imageUrl;
-    //     // document.body.appendChild(img);
-    //   })
-    // }
+  
   },
   created() {
-    axios.get("https://cataas.com/cat")
-      .then(response => {
-        this.imageUrls.push(response.request.responseURL);
-        return axios.get("https://cataas.com/cat");
-      })
   }
 };
 </script>
@@ -51,15 +38,10 @@ export default {
   margin-top: 0px;
   
 }
-/* .loginButton {
+.loginButton {
   display: flex;
-} */
-.NavBar {
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0; 
-} 
+}
+
 
 
 </style>

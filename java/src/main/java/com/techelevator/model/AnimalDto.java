@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AnimalDto {
 
-    private int addedBy = 1;
+    private int addedBy;
     private String name;
     private String type;
     private String description;

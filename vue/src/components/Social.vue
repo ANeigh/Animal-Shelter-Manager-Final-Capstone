@@ -1,7 +1,7 @@
 <template>
   <section class="Social">
-    <h1>Restful Retreat Shelter Social</h1>
-    <img class="SocialPic" src="../assets/social.png" />
+    <h1 class="SocialText">Restful Retreat Shelter Social</h1>
+    <img class="SocialPic" src="../assets/SocialIcons.png" />
   </section>
 </template>
 
@@ -11,13 +11,29 @@ export default {};
 
 <style>
 .Social {
-  display: block;
-  position: absolute;
-  top: 0;
+  display: flex;
+  position: absolute; 
+  top: 30%;
   right: 0;
+  height: 50%;
   width: 200px;
-  text-align: right;
+  text-align: center;
+  flex-direction: column;
+  background-color: #a28f9d;
+  border: 15px solid #2F0A28;
+  border-radius: 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #235789;
+  padding: 10px;
+}
+.SocialText {
+  flex-grow: 1;
 }
 .SocialPic {
+margin-top: 10px;
 }
+
+
+
 </style>

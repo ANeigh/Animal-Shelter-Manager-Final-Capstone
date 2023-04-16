@@ -11,11 +11,11 @@
     <img class="WelcomePic" src="../assets/Job-AnimalShelter.png" />
     </router-link>
     <h1 class="PicText">Restful Retreat Shelter</h1>
-    <router-link class="navButtons" to="{name: ''}">About Us</router-link>&nbsp;                                                                                
-    <router-link class="navButtons" to="{name: 'list'}">Animal List</router-link>&nbsp;
-    <router-link class="navButtons" to="{name: ''}">Adopted List</router-link>&nbsp;
-    <router-link class="navButtons" to="{name: 'register'}">Volunteer Sign up</router-link>&nbsp;
-    <router-link class="navButtons" to="{name: ''}">Volunteer Directory</router-link>
+    <router-link class="navButtons" to="/about">About Us</router-link>&nbsp;                                                                                
+    <router-link class="navButtons" to="/animallist">Animal List</router-link>&nbsp;
+    <router-link class="navButtons" to="/adoptedlist">Adopted List</router-link>&nbsp;
+    <router-link class="navButtons" to="/register">Volunteer Sign up</router-link>&nbsp;
+    <router-link class="navButtons" to="/volunteerlist">Volunteer Directory</router-link>
   </section>
 </template>
 
@@ -43,7 +43,7 @@ export default {
   border-left: 15px solid #2F0A28;
   border-right: 15px solid #2F0A28;
   border-radius: 10px;
-  z-index: 1; /* add a z-index to ensure navbar is in front of other elements */
+  z-index: 1; 
 }
 .WelcomePic {
   display: flex;

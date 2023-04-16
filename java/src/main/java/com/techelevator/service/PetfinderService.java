@@ -149,6 +149,7 @@ public class PetfinderService {
         PreparedStatement statement = sqlConnection.prepareStatement("INSERT INTO animals (added_by, name, type, description, age, gender, adopted, breed, color, tags) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         PreparedStatement statement2 = sqlConnection.prepareStatement("INSERT INTO imgs (animal_id, url) VALUES (?, ?)");
         PreparedStatement statement3 = sqlConnection.prepareStatement("SELECT animal_id FROM animals ORDER BY animal_id DESC LIMIT 1");
+        PreparedStatement statement4 = sqlConnection.prepareStatement("DELETE from animals WHERE description = '' OR color = 'null' OR type NOT IN ('Dog', 'Cat', 'Rabbit', 'Bird')");
         for (AnimalDto animal : animalList) {
             statement.setString(1, animal.getName());
             statement.setString(2, animal.getType());
@@ -177,5 +178,6 @@ public class PetfinderService {
                 break;
             }
         }
+        statement4.executeUpdate();
     }
 }

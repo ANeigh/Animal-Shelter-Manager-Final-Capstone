@@ -7,7 +7,7 @@ public class Animal {
     private String name;
     private String type;
     private String description;
-    private int age;
+    private String age;
     private String gender;
     private boolean adopted;
     private String breed;
@@ -17,7 +17,7 @@ public class Animal {
 
     public Animal () {}
 
-    public Animal(int animal_id, String name, String type, String description, int age, String gender, boolean adopted,
+    public Animal(int animal_id, String name, String type, String description, String age, String gender, boolean adopted,
                   String breed, String color, int addedBy, String tags) {
         this.animalId = animal_id;
         this.name = name;
@@ -64,11 +64,11 @@ public class Animal {
         this.description = description;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

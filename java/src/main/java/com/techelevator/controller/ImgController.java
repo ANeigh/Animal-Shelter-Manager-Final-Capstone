@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ImgDao;
 import com.techelevator.model.Img;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class ImgController {
         return imgDao.findImgsByPet(id);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/imgs")
     public Img createImg() {
         return null;

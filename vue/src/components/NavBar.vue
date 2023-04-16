@@ -1,20 +1,32 @@
 <template>
   <section class="nav">
+  
+    <div id="nav">
+      <router-link v-bind:to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>
+    </div>
+    <router-view />
+  
     <router-link to="/">
     <img class="WelcomePic" src="../assets/Job-AnimalShelter.png" />
     </router-link>
     <h1 class="PicText">Restful Retreat Shelter</h1>
-    <router-link class="navButtons" to="{name: ''}">About Us</router-link>&nbsp;                                                                                
-    <router-link class="navButtons" to="{name: 'list'}">Animal List</router-link>&nbsp;
-    <router-link class="navButtons" to="{name: ''}">Adopted List</router-link>&nbsp;
-    <router-link class="navButtons" to="{name: 'register'}">Volunteer Sign up</router-link>&nbsp;
-    <router-link class="navButtons" to="{name: 'volunteer'}">Volunteer Directory</router-link>
+    <router-link class="navButtons" to="/about">About Us</router-link>&nbsp;                                                                                
+    <router-link class="navButtons" to="/animallist">Animal List</router-link>&nbsp;
+    <router-link class="navButtons" to="/adoptedlist">Adopted List</router-link>&nbsp;
+    <router-link class="navButtons" to="/register">Volunteer Sign up</router-link>&nbsp;
+    <router-link class="navButtons" to="/volunteerlist">Volunteer Directory</router-link>
   </section>
 </template>
 
 <script>
 export default {
   name: "nav-bar",
+   computed: {
+    isLoggedIn() {
+      return !!this.$store.state.token;
+    }
+  }
 };
 </script>
 
@@ -23,15 +35,15 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: absolute;
-  top: 25px;
-  right: 5px;
+  position: fixed;
+  top: 0px;
   background-color: #a28f9d;
   border-top: 15px solid #2F0A28;
   border-bottom: 15px solid #2F0A28;
   border-left: 15px solid #2F0A28;
   border-right: 15px solid #2F0A28;
   border-radius: 10px;
+  z-index: 1; 
 }
 .WelcomePic {
   display: flex;

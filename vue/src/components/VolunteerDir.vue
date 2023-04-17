@@ -3,7 +3,7 @@
   <section>
 <h1>Volunteer Directory</h1>
 <ul>
-    <li v-for="user in listUsers" v-bind:key="user.userID">
+    <li v-for="user in listUsers" v-bind:key="user.userID"></li>
 </ul>
     
   </section>

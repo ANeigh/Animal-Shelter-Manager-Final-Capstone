@@ -2,8 +2,8 @@
 <!-- As a volunteer, I want a listing of other volunteers and admins with contact info.-->
   <section>
 <h1>Volunteer Directory</h1>
-<ul v-for="user in listUsers" v-bind:key="userID">
-    <li>
+<ul>
+    <li v-for="user in listUsers" v-bind:key="user.userID">
 </ul>
     
   </section>

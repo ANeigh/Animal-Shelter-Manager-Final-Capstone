@@ -15,7 +15,7 @@ export default {};
 </script>
 
 <style>
-.Social {
+/* .Social {
   display: flex;
   position: relative; 
   top: 30%;
@@ -38,7 +38,7 @@ export default {};
 }
 .SocialPic {
 margin-top: 10px;
-}
+} */
 
 
 

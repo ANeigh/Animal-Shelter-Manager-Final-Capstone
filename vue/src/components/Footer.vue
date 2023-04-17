@@ -1,41 +1,79 @@
 <template>
-  <section class="Footer">
-    <h1>Location of Shelter and Contact Info</h1>
-    <p>
-      Address: 123 Main Street, Pittsburgh, PA 15220 Phone: (555) 555-5555
-      Email: info@restfulretreatshelter.org Website:
-      www.restfulretreatshelter.org
-    </p>
+  <section class="footer">
+    <div class="quick-links">
+      <p class="footer-item">
+        <router-link class="navButtons" to="/about">About Us</router-link>
+      </p>
+      <p class="footer-item">
+        <router-link class="navButtons" to="/animallist"
+          >Animal List</router-link
+        >
+      </p>
+      <p class="footer-item">
+        <router-link class="navButtons" to="/adoptedlist"
+          >Adopted List</router-link
+        >
+      </p>
+      <p class="footer-item">
+        <router-link class="navButtons" to="/register">Register</router-link>
+      </p>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-item">Address: 123 Main Street, Pittsburgh, PA 15220</p>
+      <p class="footer-item">Phone: (555) 555-5555</p>
+      <p class="footer-item">Email: info@restfulretreatshelter.org</p>
+      <p class="footer-item">Website: www.restfulretreatshelter.org</p>
+    </div>
+    <div class="Social">
+      <p class="SocialText">Facebook: Name: Restful Retreat Shelter</p>
+      <p class="SocialText">Twitter: Handle: @RestfulRetreat</p>
+      <p class="SocialText">Instagram: Handle: @restfulretreatshelter</p>
+      <p class="SocialText">YouTube: Name: Restful Retreat Shelter</p>
+      <p class="SocialText">TikTok: Handle: @restfulretreatshelter</p>
+
+      <img class="SocialPic" src="../assets/SocialIcons.png" />
+    </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: "footer",
-};
-</script>
-
 <style>
-.Footer {
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  position: relative;
+  background-color: #2f0a28;
+  color: #f4fff8;
+  padding: 20px;
+  text-align: center;
+}
+.footer-item {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 20px;
+  display: block;
+  text-align: left;
+}
+.footer-contact {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  bottom: 0; 
-  left: 0;
-  right: 0;
-  background-color: #a28f9d;
-  border: 15px solid #2F0A28;
-  border-radius: 10px;
+  margin-left: auto;
+}
+.Social {
+  margin-left: auto;
+}
+.SocialPic {
+  width: 100px;
+  height: auto;
+  margin-top: 10px;
+}
+.SocialText {
+  padding: 5px 0;
   font-size: 20px;
-  text-transform: uppercase;
-  color: #235789;
-  padding: 20px;  
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
-
-h1 {
-  margin: 0;
-}
-
 </style>

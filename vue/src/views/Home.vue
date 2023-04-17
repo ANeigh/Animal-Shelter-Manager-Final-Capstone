@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <NavBar />
-    <Social />
+    <!-- <Social /> -->
     <Carousel />
     <Footer />
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 import NavBar from "../components/NavBar";
-import Social from "../components/Social";
+// import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
 import animalService from "../services/AnimalService";
@@ -20,7 +20,7 @@ export default {
   name: "home",
   components: {
     NavBar,
-    Social,
+    // Social,
     Carousel,
     Footer,
   },

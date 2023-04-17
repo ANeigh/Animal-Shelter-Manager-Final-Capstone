@@ -1,17 +1,10 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Animal;
-import com.techelevator.model.AnimalDto;
-import com.techelevator.service.PetfinderService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
-import javax.validation.constraints.Null;
-import javax.xml.crypto.Data;
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +21,7 @@ public class JdbcAnimalDao implements AnimalDao{
     @Override
     public List<Animal> findAll() {
         List<Animal> animals = new ArrayList<>();
-        String sql = "select * from animals";
+        String sql = "SELECT * FROM animals";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -52,7 +45,7 @@ public class JdbcAnimalDao implements AnimalDao{
     @Override
     public List<Animal> getAnimalByBreed(String breed) {
         List<Animal> animals = new ArrayList<>();
-        String sql = "SELECT * from animals WHERE breed = ?";
+        String sql = "SELECT * FROM animals WHERE breed = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breed);
         while (results.next()) {
             Animal animal = mapRowToAnimal(results);

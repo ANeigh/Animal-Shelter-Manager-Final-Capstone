@@ -14,8 +14,8 @@
     <router-link class="navButtons" to="/about">About Us</router-link>&nbsp;                                                                                
     <router-link class="navButtons" to="/animallist">Animal List</router-link>&nbsp;
     <router-link class="navButtons" to="/adoptedlist">Adopted List</router-link>&nbsp;
-    <router-link class="navButtons" to="/register">Volunteer Sign up</router-link>&nbsp;
-    <router-link class="navButtons" to="/volunteerlist">Volunteer Directory</router-link>
+    <router-link class="navButtons" to="/register">Register</router-link>&nbsp;
+    <router-link class="navButtons" to="/volunteer">Volunteer</router-link>
   </section>
 </template>
 
@@ -62,9 +62,21 @@ export default {
 }
 
 .navButtons {
-  font-size: 35px;
-  color: #2F0A28;
+  font-size: 30px;
+  font-weight: bold;
   text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #235789;
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
 
+.navButtons:hover {
+  background-color: #a28f9d;
+  color: #235789;
+  cursor: pointer;
 }
 </style>

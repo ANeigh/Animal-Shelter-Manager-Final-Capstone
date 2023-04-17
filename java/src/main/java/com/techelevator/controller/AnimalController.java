@@ -26,5 +26,8 @@ public class AnimalController {
         return animalDao.getAnimalByType(type);
     }
 
-
+    @GetMapping(path = "/animal/{id}")
+    public Animal getAnimalById(@PathVariable int animalId) {
+        return animalDao.getAnimalById(animalId);
+    }
 }

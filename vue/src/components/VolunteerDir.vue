@@ -17,16 +17,16 @@ export default {
 
     },
     computed: {
-        listUsers() {
-            const users = this.$store.state.users;
-            const apps = this.$store.state.apps;
-            return users.filter(user => {
-                if app.find(user => user.username ==
-            })
+        // listUsers() {
+        //     const users = this.$store.state.users;
+        //     const apps = this.$store.state.apps;
+        //     return users.filter(user => {
+        //         if app.find(user => user.username ==
+        //     })
         }
     }
 
-}
+
 </script>
 
 <style>

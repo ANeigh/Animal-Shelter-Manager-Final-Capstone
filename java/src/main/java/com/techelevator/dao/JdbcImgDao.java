@@ -22,7 +22,7 @@ public class JdbcImgDao implements ImgDao {
     @Override
     public List<Img> findImgsByPet(int pet_id) {
         List<Img> imgs = new ArrayList<>();
-        String sql = "select * from imgs where animal_id = ?";
+        String sql = "SELECT * FROM imgs WHERE animal_id = ?";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, pet_id);
         while (results.next()) {
@@ -51,7 +51,7 @@ public class JdbcImgDao implements ImgDao {
 
     public List<Img> getAllImages(){
         List<Img> imgs = new ArrayList<>();
-        String sql = "select * from imgs";
+        String sql = "SELECT * FROM imgs";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {

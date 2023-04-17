@@ -31,7 +31,7 @@ public class PetfinderService {
 
 
     // this class will consume the Petfinder API to populate our SQL database
-    private static final String apiUrl = "https://api.petfinder.com/v2/animals?location=15221&distance=13";
+    private static final String apiUrl = "https://api.petfinder.com/v2/animals?location=15221&distance=10";
     private static URL API_BASE_URL;
 
     static {
@@ -43,8 +43,8 @@ public class PetfinderService {
     }
 
     private static final String API_TOKEN_URL = "https://api.petfinder.com/v2/oauth2/token";
-    private static final String API_KEY = "p5gm05cGz2JFgEqr0wJtiTocY2grB6yFHkeBgGs9mCU5xWvCfE";
-    private static final String API_SECRET = "ICaHA2TyKUQvZU6llSdlbGjH28GSFj6v4AfGO2BB";
+    private static final String API_KEY = "bxQfOnegCpOFRViljdyhqhSrSvDPQaYjMrAFRaAvQhvKEyVlH7";
+    private static final String API_SECRET = "wHK0HSiOz03zgty2QUtVZcM8XstiEtNGYFZmyvef";
     private final RestTemplate restTemplate = new RestTemplate();
 
     public String getToken() {

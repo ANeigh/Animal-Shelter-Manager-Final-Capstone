@@ -1,82 +1,147 @@
 <template>
   <section class="nav">
-  
-    <div id="nav">
-      <router-link v-bind:to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>
-    </div>
-    <router-view />
-  
-    <router-link to="/">
-    <img class="WelcomePic" src="../assets/Job-AnimalShelter.png" />
-    </router-link>
-    <h1 class="PicText">Restful Retreat Shelter</h1>
-    <router-link class="navButtons" to="/about">About Us</router-link>&nbsp;                                                                                
-    <router-link class="navButtons" to="/animallist">Animal List</router-link>&nbsp;
-    <router-link class="navButtons" to="/adoptedlist">Adopted List</router-link>&nbsp;
-    <router-link class="navButtons" to="/register">Register</router-link>&nbsp;
-    <router-link class="navButtons" to="/volunteer">Volunteer</router-link>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="../assets/Job-AnimalShelter.png" width="112" height="56" />
+          <h1 class="PicText" style="font-size: 1.5rem">Restful Retreat Shelter</h1>
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            <router-link class="navButtons" to="/about">About Us</router-link>
+          </a>
+
+          <a class="navbar-item">
+            <router-link class="navButtons" to="/animallist"
+              >Animal List</router-link
+            >
+          </a>
+
+          <a class="navbar-item">
+            <router-link class="navButtons" to="/adoptedlist"
+              >Adopted List</router-link
+            >
+          </a>
+
+          <a class="navbar-item">
+            <router-link class="navButtons" to="/register"
+              >Register</router-link
+            >
+          </a>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>
+                <router-link class="signupbutton" to="/volunteer"
+              >Sign up to be a Volunteer</router-link
+            >
+              </strong>
+            </a>
+            <a class="button is-light">
+              <router-link class="loginbutton" v-bind:to="{ name: 'login' }" v-if="!isLoggedIn"
+                >Login</router-link
+              >
+              <router-link class="loginbutton" v-bind:to="{ name: 'logout' }" v-if="isLoggedIn"
+                >Logout</router-link
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
   </section>
 </template>
 
 <script>
 export default {
   name: "nav-bar",
-   computed: {
+  computed: {
     isLoggedIn() {
       return !!this.$store.state.token;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-.nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.navbar {
+  font-size: 35px;
   position: fixed;
-  top: 0px;
-  background-color: #a28f9d;
-  border-top: 15px solid #2F0A28;
-  border-bottom: 15px solid #2F0A28;
-  border-left: 15px solid #2F0A28;
-  border-right: 15px solid #2F0A28;
-  border-radius: 10px;
-  z-index: 1; 
-}
-.WelcomePic {
-  display: flex;
-  margin-right: 10px;
-  width: 250px;
-  height: 150px;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background: #8BAAAD;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.PicText {
-  font-family: "Oswald", sans-serif;
-  font-size: 50px;
-  text-transform: uppercase;
-  color: #235789;
-  text-align: center;
-  margin-right:  10px;
+.navbar-brand {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px 0;
 }
 
 .navButtons {
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: #235789;
-  color: #ffffff;
-  text-decoration: none;
-  margin-right: 10px;
-  transition: background-color 0.3s ease-in-out;
+  padding: 10px 20px;
+  margin: 0 10px;
 }
 
 .navButtons:hover {
-  background-color: #a28f9d;
+  background-color: #F0F0F0;
   color: #235789;
-  cursor: pointer;
+  text-decoration: none;
+}
+
+.PicText {
+  color: #2F0A28;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+  padding: 20px;
+}
+
+.navbar-brand img {
+  height: 100%;
+  max-height: 170px;
+}
+.signupbutton {
+ 
+  font-size: 20px;
+}
+
+.loginbutton {
+ 
+  font-size: 20px;
+}
+
+.loginbutton:hover {
+  background-color: #F0F0F0;
+  color: #235789;
+  text-decoration: none;
+}
+
+.signupbutton:hover {
+  color: #235789;
+  text-decoration: none;
 }
 </style>

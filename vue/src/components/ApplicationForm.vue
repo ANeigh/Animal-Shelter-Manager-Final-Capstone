@@ -67,7 +67,7 @@
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-link">Submit</button>
+          <button class="button is-link" type="submit">Submit</button>
         </div>
         <div class="control">
           <button class="button is-link is-light" v-on:click="resetForm">

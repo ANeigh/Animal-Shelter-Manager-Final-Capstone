@@ -1,8 +1,6 @@
 <template>
   <section>
-    
     <form @submit.prevent="saveApp">
-   
       <!-- Bulma form layout -->
       <div class="field">
         <label class="label" for="first_name">First Name</label>
@@ -72,7 +70,9 @@
           <button class="button is-link">Submit</button>
         </div>
         <div class="control">
-          <button class="button is-link is-light" v-on:click="resetForm">Cancel</button>
+          <button class="button is-link is-light" v-on:click="resetForm">
+            Cancel
+          </button>
         </div>
       </div>
     </form>
@@ -90,17 +90,34 @@ export default {
         phone: "",
         status: "Pending",
         username: "",
-        password: "password",
+        password: "",
       },
     };
   },
   computed: {
-// username: {
-//   return this.newApp.username = this.newApp.email;
-// }
+    setUsername() {
+      return this.newApp.email;
+    },
+    setPassword() {
+      /* Function to generate random password */
+      var pass = "";
+      var str =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz0123456789@#$";
+
+      for (let i = 1; i <= 8; i++) {
+        var char = Math.floor(Math.random() * str.length + 1);
+
+        pass += str.charAt(char);
+      }
+
+      return pass;
+    },
   },
   methods: {
     saveApp() {
+      this.newApp.username = this.setUsername;
+      this.newApp.password = this.setPassword;
       this.$store.commit("ADD_NEW_APP", this.newApp);
       this.newApp = {
         firstName: "",
@@ -109,7 +126,7 @@ export default {
         phone: "",
         status: "Pending",
         username: "",
-        password: "password",
+        password: "",
       };
     },
     resetForm() {
@@ -120,9 +137,9 @@ export default {
         phone: "",
         status: "Pending",
         username: "",
-        password: "password",
+        password: "",
       };
-    }
+    },
   },
 };
 </script>

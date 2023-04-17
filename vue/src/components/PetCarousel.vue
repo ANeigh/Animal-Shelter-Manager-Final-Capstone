@@ -49,9 +49,9 @@ export default {
   border-radius: 10px;
   overflow: hidden;
   max-width: 80%;
-  margin: 0 auto; 
+  margin: 0 auto;
   position: relative;
-  bottom: 12%;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
   max-height: 300px;

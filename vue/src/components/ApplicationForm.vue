@@ -1,109 +1,82 @@
 <template>
-  <h3>Apply Below</h3>
-    <form @submit.prevent="newApp">
-      <label for="first_name">First Name</label>
-      <input type="text" id="first_name" name="first_name" v-model="newApp.firstName"/>
-      <label for="last_name">Last Name</label>
-      <input type="text" id="last_name" name="last_name" v-model="newApp.lastName" /><br />
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" v-model="newApp.email"/><br />
-      <label for="phone">Phone Number</label>
-      <input type="text" id="phone" name="phone" v-model="newApp.phone"/>
-      <input type="submit" value="Submit" />
+  <section>
+    
+    <form @submit.prevent="saveApp">
+   
+      <!-- Bulma form layout -->
+      <div class="field">
+        <label class="label" for="first_name">First Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            id="first_name"
+            name="first_name"
+            v-model="newApp.firstName"
+            placeholder="First name"
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="last_name">Last Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            id="last_name"
+            name="last_name"
+            v-model="newApp.lastName"
+            placeholder="Last name"
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="email"
+            id="email"
+            name="email"
+            v-model="newApp.email"
+            placeholder="Email input"
+            value="hello@"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="phone">Phone Number</label>
+        <div class="control has-icons-left">
+          <input
+            class="input"
+            type="text"
+            id="phone"
+            name="phone"
+            v-model="newApp.phone"
+            placeholder="(412)867-5309"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-phone"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light" v-on:click="resetForm">Cancel</button>
+        </div>
+      </div>
     </form>
-    
-<!-- Bulma form layout -->
-<div class="field">
-  <label class="label">First Name</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Text input">
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Last Name</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
-  </div>
-  <p class="help is-success">This username is available</p>
-</div>
-
-<div class="field">
-  <label class="label">Email</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
-  </div>
-  <p class="help is-danger">This email is invalid</p>
-</div>
-
-<div class="field">
-  <label class="label">Subject</label>
-  <div class="control">
-    <div class="select">
-      <select>
-        <option>Select dropdown</option>
-        <option>With options</option>
-      </select>
-    </div>
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Message</label>
-  <div class="control">
-    <textarea class="textarea" placeholder="Textarea"></textarea>
-  </div>
-</div>
-
-<div class="field">
-  <div class="control">
-    <label class="checkbox">
-      <input type="checkbox">
-      I agree to the <a href="#">terms and conditions</a>
-    </label>
-  </div>
-</div>
-
-<div class="field">
-  <div class="control">
-    <label class="radio">
-      <input type="radio" name="question">
-      Yes
-    </label>
-    <label class="radio">
-      <input type="radio" name="question">
-      No
-    </label>
-  </div>
-</div>
-
-<div class="field is-grouped">
-  <div class="control">
-    <button class="button is-link">Submit</button>
-  </div>
-  <div class="control">
-    <button class="button is-link is-light">Cancel</button>
-  </div>
-</div>
-
-
-
-
-  
-    
-  
+  </section>
 </template>
 
 <script>
@@ -116,25 +89,41 @@ export default {
         email: "",
         phone: "",
         status: "Pending",
-        username: "",           /* What value should this be?? user-defined or not? */
-        password: "password"
+        username: "",
+        password: "password",
       },
     };
   },
+  computed: {
+// username: {
+//   return this.newApp.username = this.newApp.email;
+// }
+  },
   methods: {
     saveApp() {
-      this.$store.commit("ADD_NEW_APP", this.newApp)
+      this.$store.commit("ADD_NEW_APP", this.newApp);
       this.newApp = {
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
         status: "Pending",
-        username: "",         
-        password: "password"
+        username: "",
+        password: "password",
+      };
+    },
+    resetForm() {
+      this.newApp = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        status: "Pending",
+        username: "",
+        password: "password",
       };
     }
-  }
+  },
 };
 </script>
 

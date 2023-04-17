@@ -10,5 +10,7 @@ public interface ImgDao {
 
     Img findImgById(int img_id);
 
-    boolean create (String url);
+    int create (String url, int animalId);
+
+    List<Img> getAllImages();
 }

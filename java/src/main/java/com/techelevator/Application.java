@@ -13,8 +13,8 @@ public class Application {
     public static void main(String[] args) throws SQLException, IOException {
         SpringApplication.run(Application.class, args);
 
-        PetfinderService petfinderService = new PetfinderService();
-//        petfinderService.populateDB();
+        //PetfinderService petfinderService = new PetfinderService();
+        //petfinderService.populateDB();
 
     }
 

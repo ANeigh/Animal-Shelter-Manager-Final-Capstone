@@ -17,7 +17,7 @@ export default {};
 <style>
 .Social {
   display: flex;
-  position: absolute; 
+  position: relative; 
   top: 30%;
   right: 0;
   height: 50%;

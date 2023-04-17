@@ -28,6 +28,7 @@ export default {
     justify-content: space-evenly;
     flex-wrap: wrap;
     background: white;
+    padding-top: 150px;
 }
 
 </style>

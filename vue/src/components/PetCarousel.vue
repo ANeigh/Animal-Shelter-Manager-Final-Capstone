@@ -40,7 +40,7 @@ export default {
  display: flex;
   justify-content:space-between;
   align-items: center;
-  margin: 20px 0;
+   margin: 20px 0; 
   background-color: #a28f9d;
   border-top: 15px solid #2F0A28;
   border-bottom: 15px solid #2F0A28;
@@ -49,12 +49,13 @@ export default {
   border-radius: 10px;
   overflow: hidden;
   max-width: 80%;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 15%;
+  margin: 0 auto; 
+  position: relative;
+  bottom: 12%;
   left: 50%;
   transform: translateX(-50%);
   max-height: 300px;
+  top: 80%;
 }
 
 

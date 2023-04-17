@@ -5,12 +5,12 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import List from '../views/List.vue'
 import Volunteer from '../views/Volunteer.vue'
 import About from '../views/About.vue'
 import AnimalListView from '../views/AnimalListView'
 import AdoptedList from '../views/AdoptedList'
 import VolunteerList from '../views/VolunteerListView'
+import AnimalDetails from '../views/AnimalDetails'
 
 Vue.use(Router)
 
@@ -31,14 +31,6 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: '/list',
-      name: 'list',
-      component: List,
       meta: {
         requiresAuth: false
       }
@@ -103,6 +95,14 @@ const router = new Router({
       path: "/volunteerlist",
       name: "volunteerlist",
       component: VolunteerList,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/animaldetails/:animalId",
+      name: "animaldetails",
+      component: AnimalDetails,
       meta: {
         requiresAuth: false
       }

@@ -50,7 +50,7 @@ export default {
   overflow: hidden;
   max-width: 80%;
   margin: 0 auto;
-  position: absolute;
+  position: relative;
   bottom: 15%;
   left: 50%;
   transform: translateX(-50%);

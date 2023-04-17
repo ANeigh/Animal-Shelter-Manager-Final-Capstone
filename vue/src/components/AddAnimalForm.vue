@@ -1,9 +1,11 @@
 <template>
+<section>
+    <button class="button is-link is-outlined addButton">Add Pet For Adoption</button>
   <div class="container">
     <div class="field">
       <label class="label">Name</label>
       <div class="control">
-        <input class="input" type="text" placeholder="Text input" />
+        <input class="input" type="text" placeholder="Text input" v-model="newAnimal.name" />
       </div>
     </div>
 
@@ -11,7 +13,8 @@
       <label class="label">Type</label>
       <div class="control">
         <div class="select">
-          <select>
+          <select v-model="newAnimal.type">
+            <option disabled value="">Please select one</option>
             <option>Cat</option>
             <option>Dog</option>
             <option>Rabbit</option>
@@ -25,7 +28,8 @@
       <label class="label">Age</label>
       <div class="control">
         <div class="select">
-          <select>
+          <select v-model="newAnimal.age">
+            <option disabled value="">Please select one</option>
             <option>Baby</option>
             <option>Young</option>
             <option>Adult</option>
@@ -86,6 +90,7 @@
       </div>
     </div>
   </div>
+</section>
 </template>
 
 <script>
@@ -109,4 +114,16 @@ export default {
 </script>
 
 <style>
+.container {
+    width: 400px;
+}
+
+.header {
+    text-align: center;
+}
+
+.addButton {
+    align-content: center;
+}
+
 </style>

@@ -1,8 +1,12 @@
 import axios from "axios";
 
 export default {
-    list() {
+    getAllAnimals() {
         return axios.get("/animals");
+    },
+
+    getAnimalsByType(animalType) {
+        return axios.get("/animals/" + animalType);
     },
 
     createAnimal(animal) {

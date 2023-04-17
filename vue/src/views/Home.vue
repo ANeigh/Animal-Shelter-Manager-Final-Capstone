@@ -14,7 +14,7 @@ import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
 import animalService from "../services/AnimalService";
 import imgService from "../services/ImgService";
-// import axios from 'axios';
+
 
 export default {
   name: "home",

@@ -2,9 +2,9 @@
 <!-- As a volunteer, I want a listing of other volunteers and admins with contact info.-->
   <section>
 <h1>Volunteer Directory</h1>
-<ul v-for="user in listUsers" v-bind:key="userID">
+<!-- <ul v-for="user in listUsers" v-bind:key="userID">
     <li>
-</ul>
+</ul> -->
     
   </section>
 </template>
@@ -17,16 +17,16 @@ export default {
 
     },
     computed: {
-        listUsers() {
-            const users = this.$store.state.users;
-            const apps = this.$store.state.apps;
-            return users.filter(user => {
-                if app.find(user => user.username ==
-            })
+        // listUsers() {
+        //     const users = this.$store.state.users;
+        //     const apps = this.$store.state.apps;
+        //     return users.filter(user => {
+        //         if app.find(user => user.username ==
+        //     })
         }
     }
 
-}
+
 </script>
 
 <style>

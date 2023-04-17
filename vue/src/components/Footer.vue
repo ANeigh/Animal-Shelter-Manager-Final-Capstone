@@ -31,8 +31,7 @@ export default {
   font-size: 20px;
   text-transform: uppercase;
   color: #235789;
-  padding: 20px;
-  
+  padding: 20px;  
 }
 
 h1 {

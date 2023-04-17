@@ -85,7 +85,7 @@ const router = new Router({
     },
     {
       path: "/animallist",
-      name: "animallist",
+      name: "animallistview",
       component: AnimalListView,
       meta: {
         requiresAuth: false

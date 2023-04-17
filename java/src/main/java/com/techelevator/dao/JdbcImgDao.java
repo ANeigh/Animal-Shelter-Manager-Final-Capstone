@@ -65,8 +65,8 @@ public class JdbcImgDao implements ImgDao {
 
     private Img mapRowToImg(SqlRowSet rs) {
         Img img = new Img();
-        img.setPet_id (rs.getInt("img_id"));
-        img.setAnimal_id(rs.getInt("animal_id"));
+        img.setImgId (rs.getInt("img_id"));
+        img.setAnimalId(rs.getInt("animal_id"));
         img.setUrl(rs.getString("url"));
         return img;
     }

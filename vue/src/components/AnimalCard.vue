@@ -1,7 +1,7 @@
 <template>
   <div class="animal-card" @click="toAnimalDetails">
       <h2 class='animal-name'>{{animal.name}}</h2>
-      <img v-bind:src='animal.url'>
+      <img v-bind:src='getFirstImageUrl(animal.animalId)' class="animal-image">
       <h3 class='animal-breed'>{{animal.breed}}</h3>
   </div>
 </template>
@@ -12,7 +12,11 @@ export default {
     props: ['animal'],
     methods: {
         toAnimalDetails() {
-            this.router.push({ name: '', params: { id: this.animal.id}});
+            this.router.push({ name: '', params: { id: this.animal.animalId}});
+        },
+        getFirstImageUrl(animalId) {
+            const animalImages = this.$store.state.imgs.filter(img => img.animalId === animalId);
+            return animalImages && animalImages.length > 0 ? animalImages[0].url : '';
         }
     }
 
@@ -40,6 +44,12 @@ export default {
 .animal-card .animal-breed {
     font-size: 1rem;
     text-align: center;
+}
+
+.animal-image {
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
 }
 
 </style>

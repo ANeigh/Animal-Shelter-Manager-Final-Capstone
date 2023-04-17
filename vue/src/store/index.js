@@ -19,6 +19,7 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     animals: [],
+    imgs: [],
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -38,6 +39,12 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_ANIMALS(state, animals) {
+      state.animals = animals;
+    },
+    SET_IMGS(state, imgs) {
+      state.imgs = imgs;
     }
   }
 })

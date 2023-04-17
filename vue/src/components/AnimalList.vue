@@ -5,7 +5,7 @@
       <animal-card
       v-bind:animal="animal"
       v-for="animal in $store.state.animals"
-      v-bind:key="animal.id"      
+      v-bind:key="animal.animalId"      
       />
   </div>
     </section>

@@ -4,24 +4,24 @@ import java.math.BigInteger;
 
 public class Img {
 
-    private int pet_id;
+    private int imgId;
     private String url;
-    private int animal_id;
+    private int animalId;
 
     public Img() {}
 
-    public Img(int pet_id, String url, int animal_id) {
-        this.pet_id = pet_id;
+    public Img(int imgId, String url, int animalId) {
+        this.imgId = imgId;
         this.url = url;
-        this.animal_id = animal_id;
+        this.animalId = animalId;
     }
 
-    public int getPet_id() {
-        return pet_id;
+    public int getImgId() {
+        return imgId;
     }
 
-    public void setPet_id(int pet_id) {
-        this.pet_id = pet_id;
+    public void setImgId(int imgId) {
+        this.imgId = imgId;
     }
 
     public String getUrl() {
@@ -32,11 +32,11 @@ public class Img {
         this.url = url;
     }
 
-    public int getAnimal_id() {
-        return animal_id;
+    public int getAnimalId() {
+        return animalId;
     }
 
-    public void setAnimal_id(int animal_id) {
-        this.animal_id = animal_id;
+    public void setAnimalId(int animalId) {
+        this.animalId = animalId;
     }
 }

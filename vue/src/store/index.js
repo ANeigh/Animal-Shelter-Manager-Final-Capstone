@@ -12,38 +12,13 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
 export default new Vuex.Store({
   state: {
-    animals: [
-      {
-        id: 1,
-        name: 'Sarge',
-        type: "Dog",
-        description: '',
-        age: 2,
-        gender: 'Male',
-        adopted: false,
-        breed: 'Good Boy',
-        color: 'tan',
-        url: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/62422186/3/?bust=1681147329&width=600'
-      },
-      {
-      id: 2,
-      name: 'Sarge',
-      type: "Dog",
-      description: '',
-      age: 2,
-      gender: 'Male',
-      adopted: false,
-      breed: 'Good Boy',
-      color: 'tan',
-      url: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/62422186/3/?bust=1681147329&width=600'
-    }
-    ],
+    animals: [],
     applications: [
       {
         firstName: "",
@@ -51,10 +26,11 @@ export default new Vuex.Store({
         email: "",
         phone: "",
         status: "",
-        username: "",         
+        username: "",
         password: ""
       }
     ],
+    imgs: [],
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -66,7 +42,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -77,6 +53,12 @@ export default new Vuex.Store({
     },
     ADD_NEW_APP(state, newApp) {
       state.applications.push(newApp);
+    },
+    SET_ANIMALS(state, animals) {
+      state.animals = animals;
+    },
+    SET_IMGS(state, imgs) {
+      state.imgs = imgs;
     }
   }
 })

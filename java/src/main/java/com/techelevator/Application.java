@@ -14,7 +14,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
 
         PetfinderService petfinderService = new PetfinderService();
-        petfinderService.populateDB();
+//        petfinderService.populateDB();
 
     }
 

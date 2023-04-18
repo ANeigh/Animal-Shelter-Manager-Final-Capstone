@@ -15,8 +15,11 @@
     
     <ApplicationForm />
     </div>
-    <div>
+    <div class="directory-container">
       <VolunteerDir />
+    </div>
+    <div class="app-approval-container">
+      <ApplicationApproval />
     </div>
   </section>
 </template>
@@ -24,16 +27,24 @@
 <script>
 import ApplicationForm from "../components/ApplicationForm.vue";
 import VolunteerDir from "../components/VolunteerDir.vue";
+import ApplicationApproval from "../components/ApplicationApproval.vue"
 
 export default {
   name: "volunteer",
   components: {
     ApplicationForm,
-    VolunteerDir
+    VolunteerDir,
+    ApplicationApproval
   },
   
 };
 </script>
 
 <style>
+.directory-container {
+  display: flex;
+}
+.app-approval-container {
+  display: flex;
+}
 </style>

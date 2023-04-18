@@ -90,6 +90,8 @@ export default {
   align-items: center;
   height: 50vh;
   background: #a28f9d;
+  font-family: "sans-serif";
+  font-size: 20px;
 }
 
 label {

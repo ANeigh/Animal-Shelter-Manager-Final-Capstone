@@ -16,7 +16,7 @@
         />
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
-      <label for="confirmPassword">Confirm Password</label>
+        <label for="confirmPassword">Confirm Password</label>
         <input
           type="password"
           id="confirmPassword"
@@ -31,7 +31,7 @@
         </p>
       </div>
     </form>
-    <NavBar /> 
+    <NavBar />
     <!-- <PetCarousel /> -->
     <Footer />
   </div>
@@ -102,10 +102,11 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 60vh;
-   background: #a28f9d;
+  background: #a28f9d;
+  font-family: "sans-serif";
+  font-size: 20px;
 }
 label {
   margin-right: 0.5rem;
 }
-
 </style>

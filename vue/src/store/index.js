@@ -59,6 +59,12 @@ export default new Vuex.Store({
     },
     SET_IMGS(state, imgs) {
       state.imgs = imgs;
+    },
+    ADD_ANIMAL(state, animal) {
+      state.animals.push(animal);
+    },
+    ADD_IMG(state, img) {
+      state.imgs.push(img);
     }
   }
 })

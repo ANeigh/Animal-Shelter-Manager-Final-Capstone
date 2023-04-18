@@ -1,6 +1,6 @@
 <template>
   <section class="list-section">
-    <h1>Animals Available For Adoption</h1>
+    <h1 class="header">Pets Available For Adoption</h1>
     <div class="animal-container">
       <animal-card
         v-bind:animal="animal"
@@ -8,7 +8,7 @@
         v-bind:key="animal.animalId"
       />
     </div>
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <nav class="pagination is-centered page-nav" role="navigation" aria-label="pagination">
       <a class="pagination-previous previous-button" @click="previousPage" :disabled="currentPage === 1">Previous</a>
       <a class="pagination-next next-button" @click="nextPage" :disabled="currentPage === totalPages">Next</a>
       <ul class="pagination-list">
@@ -82,21 +82,25 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding-top: 150px;
+  padding-top: 20px;
   margin-bottom: 20px;
 }
-
 .list-section {
     background:#F4FFF8;
     margin-bottom: 20px;
 }
-
 .previous-button {
     margin-left: 50px;
 }
-
 .next-button {
     margin-right: 50px;
+}
+.header {
+  font-size: 50px;
+  color: #235789
+}
+.page-nav {
+  margin-bottom: 10px;
 }
 
 </style>

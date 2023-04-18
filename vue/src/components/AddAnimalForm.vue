@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header">
         <button class="button is-link is-outlined" @click="toggleForm">
-          Add Pet For Adoption
+          Add New Pet
         </button>
       </div>
       <div class="container" v-if="showForm">
@@ -52,35 +52,60 @@
         <div class="field">
           <label class="label">Breed</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Text input" v-model="newAnimal.breed"/>
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              v-model="newAnimal.breed"
+            />
           </div>
         </div>
 
         <div class="field">
           <label class="label">Gender</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Text input" v-model="newAnimal.gender"/>
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              v-model="newAnimal.gender"
+            />
           </div>
         </div>
 
         <div class="field">
           <label class="label">Color</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Text input" v-model="newAnimal.color"/>
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              v-model="newAnimal.color"
+            />
           </div>
         </div>
 
         <div class="field">
           <label class="label">Tags</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Text input" v-model="newAnimal.tags"/>
+            <input
+              class="input"
+              type="text"
+              placeholder="Text input"
+              v-model="newAnimal.tags"
+            />
           </div>
         </div>
 
         <div class="field">
           <label class="label">Picture</label>
           <div class="control">
-            <input class="input" type="text" placeholder="URL input" v-model="newImg.url"/>
+            <input
+              class="input"
+              type="text"
+              placeholder="URL input"
+              v-model="newImg.url"
+            />
           </div>
         </div>
 
@@ -97,10 +122,17 @@
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link" @click.prevent="toggleForm, addNewAnimal">Submit</button>
+            <button
+              class="button is-link"
+              @click.prevent="toggleForm, addNewAnimal, clearForm"
+            >
+              Submit
+            </button>
           </div>
           <div class="control">
-            <button class="button is-link is-light" @click.prevent="toggleForm">Cancel</button>
+            <button class="button is-link is-light" @click.prevent="toggleForm">
+              Cancel
+            </button>
           </div>
         </div>
       </div>
@@ -110,6 +142,7 @@
 
 <script>
 import animalService from "../services/AnimalService";
+import imgService from "../services/ImgService";
 
 export default {
   name: "add-animal-form",
@@ -126,33 +159,75 @@ export default {
         description: "",
       },
       newImg: {
-          url: ""
-      }
+        url: "",
+      },
     };
   },
   methods: {
     toggleForm() {
       this.showForm = !this.showForm;
+      this.clearForm();
+      this.goToTop();
     },
     addNewAnimal() {
-      animalService.createAnimal(this.newAnimal)
-      .then(response => {
+      animalService
+        .createAnimal(this.newAnimal)
+        .then((response) => {
           if (response.status === 201) {
-              //const animalId = response.data;
-
+            const animalId = response.data;
+            const newImg = { animalId: animalId, url: this.newImg.url };
+            imgService
+              .createImg(newImg)
+              .then((response) => {
+                if (response.status === 201) {
+                  const imgId = response.data;
+                  const animal = {
+                    animalId: animalId,
+                    
+                  }
+                  const img = {
+                    imgId: imgId,
+                    url: newImg.url,
+                    animalId: newImg.animalId,
+                  };
+                  this.$store.commit("ADD_ANIMAL", animal);
+                  this.$store.commit("ADD_IMG", img);
+                }
+              })
+              .catch((error) => {
+                this.handleErrorResponse(error, "Error adding new image.");
+              });
           }
-      })
-      .catch(error => {
-          this.handleErrorResponse(error, "Error Adding New Animal");
-      });
-    }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "Error adding new animal.");
+        });
+    },
+    clearForm() {
+      this.newAnimal.name = "";
+      this.newAnimal.breed = "";
+      this.newAnimal.color = "";
+      this.newAnimal.tags = "";
+      this.newAnimal.type = "";
+      this.newAnimal.age = "";
+      this.newAnimal.description = "";
+      this.newImg.url = "";
+    },
+    goToTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
 
 <style>
 .container {
+  display: flex;
   width: 400px;
+  margin-top: 200px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  align-content: left;
 }
 .header {
   text-align: center;

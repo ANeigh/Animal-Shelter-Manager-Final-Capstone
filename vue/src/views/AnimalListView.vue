@@ -1,8 +1,8 @@
 <template>
   <section class="animallist">
     <NavBar />
-    <animal-list></animal-list>
     <add-animal-form />
+    <animal-list></animal-list>
     <Social />
     <Carousel />
     <Footer />

@@ -19,13 +19,11 @@ export default {
             return animalImages && animalImages.length > 0 ? animalImages[0].url : '';
         }
     }
-
 }
 </script>
 
 <style>
 .animal-card {
-
     border-radius: 10px;
     width: 250px;
     height: 300px;

@@ -31,7 +31,7 @@ public class PetfinderService {
 
 
     // this class will consume the Petfinder API to populate our SQL database
-    private static final String apiUrl = "https://api.petfinder.com/v2/animals?location=15221&distance=10";
+    private static final String apiUrl = "https://api.petfinder.com/v2/animals?location=15221&distance=10&type=Bird";
     private static URL API_BASE_URL;
 
     static {
@@ -178,6 +178,6 @@ public class PetfinderService {
                 break;
             }
         }
-        statement4.executeUpdate();
+       // statement4.executeUpdate();
     }
 }

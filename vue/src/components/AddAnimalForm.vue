@@ -165,7 +165,7 @@ export default {
         url: '',
       },
     };
-  },
+  },  
   methods: {
     openUploadModal() {
       window.cloudinary.openUploadWidget(
@@ -173,10 +173,14 @@ export default {
           upload_preset: 'ml_default'
         },
         (error, result) => {
-         // if (!error && result && result.event === "success") {
-            console.log('Done uploading..: ', result.info);  
-            this.newImg.url = result.url;
-          //}
+          console.log('Cloudinary result:', result);
+          if (!error && result && result.event === "success") {
+            console.log('Done uploading..: ', result.info); 
+            if (result.info.url) {
+              this.newImg.url = result.info.url;
+              console.log('URL:', this.newImg.url);
+            } 
+          }
         }).open();
     },
     toggleForm() {

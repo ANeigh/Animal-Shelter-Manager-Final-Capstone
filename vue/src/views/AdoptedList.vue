@@ -1,34 +1,43 @@
 <template>
   <section class="adoptedlist">
     <NavBar />
-    <Social />
-    <Carousel />
+    <div class="animal-container">
+      <animal-card
+        v-bind:animal="animal"
+        v-for="animal in adoptedAnimals"
+        v-bind:key="animal.animalId"
+      />
+    </div>
     <Footer />
   </section>
 </template>
 
 <script>
 import NavBar from "../components/NavBar";
-import Social from "../components/Social";
-import Carousel from "../components/PetCarousel.vue";
+import AnimalCard from "../components/AnimalCard.vue";
 import Footer from "../components/Footer.vue";
+
 export default {
   name: "adoptedlistview",
   components: {
     NavBar,
-    Social,
-    Carousel,
+    AnimalCard,
     Footer,
+  },
+  computed: {
+    adoptedAnimals() {
+      return this.$store.state.animals.filter((animal) => animal.adopted);
+    },
   },
 };
 </script>
 
 <style>
-.adoptedlist {
-  background-image: url("https://cataas.com/cat");
-  background-size: 100% 100%;
-  background-position: center;
-  height: 100vh;
-  position: relative;
+.animal-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background: white;
+  padding-top: 150px;
 }
 </style>

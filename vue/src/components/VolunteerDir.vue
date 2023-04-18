@@ -1,6 +1,7 @@
 <template>
   <!-- As a volunteer, I want a listing of other volunteers and admins with contact info.-->
   <section>
+<<<<<<< HEAD
     <h1>Volunteer Directory</h1>
     <ul style="list-style-type:none">
       <li>Volunteer test dummy</li>
@@ -14,6 +15,14 @@
       </li>
     </ul>
   </section>
+=======
+<h1>Volunteer Directory</h1>
+<ul>
+    <!-- <li v-for="user in listUsers" v-bind:key="user.userID"> -->
+</ul>
+    
+ </section> 
+>>>>>>> 64ad1df2b3ae44e79fca30719b74f52ab122a406
 </template>
 
 <script>

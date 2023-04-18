@@ -1,7 +1,6 @@
 <template>
   <section class="volunteerlist">
     <NavBar />
-    <Social />
     <Carousel />
     <Footer />
   </section>
@@ -9,14 +8,12 @@
 
 <script>
 import NavBar from "../components/NavBar";
-import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
 export default {
   name: "volunteerlistview",
   components: {
     NavBar,
-    Social,
     Carousel,
     Footer,
   },

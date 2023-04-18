@@ -1,4 +1,5 @@
 <template>
+  
   <section class="content" id="volunteer">
     <div>
       <h2>
@@ -21,6 +22,7 @@
     <div class="app-approval-container">
       <ApplicationApproval />
     </div>
+    <Footer />
   </section>
 </template>
 

@@ -19,15 +19,47 @@ if (currentToken != null) {
 export default new Vuex.Store({
   state: {
     animals: [],
+    users: [
+      {
+        username: "Email@",
+        role: "Admin"
+      },
+      {
+        username: "email@mail.com",
+        role: "Volunteer"
+      },
+      {
+        username: "ourqueen@thebest.com",
+        role: "Volunteer"
+      }
+    ],
     applications: [
       {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        status: "",
-        username: "",
-        password: ""
+        firstName: "first",
+        lastName: "last",
+        email: "email@mail.com",
+        phone: "number",
+        status: "Rejected",
+        username: "email@mail.com",
+        password: "noneshallpass"
+      },
+      {
+        firstName: "FName",
+        lastName: "LName",
+        email: "Email@",
+        phone: "123-456-7890",
+        status: "Approved",
+        username: "Email@",
+        password: "assword"
+      },
+      {
+        firstName: "Dolly",
+        lastName: "Parton",
+        email: "ourqueen@thebest.com",
+        phone: "#1",
+        status: "Pending",
+        username: "ourqueen@thebest.com",
+        password: "jolene"
       }
     ],
     imgs: [],

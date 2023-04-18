@@ -30,11 +30,5 @@ export default {
 </script>
 
 <style>
-.animallist {
-  background-image: url("https://cataas.com/cat");
-  background-size: 100% 100%;
-  background-position: center;
-  height: 100vh;
-  position: relative;
-}
+
 </style>

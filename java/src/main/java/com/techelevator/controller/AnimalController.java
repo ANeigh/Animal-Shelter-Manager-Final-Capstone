@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.AnimalDao;
 import com.techelevator.model.Animal;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,4 +31,11 @@ public class AnimalController {
     public Animal getAnimalById(@PathVariable int animalId) {
         return animalDao.getAnimalById(animalId);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "animals")
+    public int createAnimal(@RequestBody Animal animal) {
+        return animalDao.create(animal);
+    }
+
 }

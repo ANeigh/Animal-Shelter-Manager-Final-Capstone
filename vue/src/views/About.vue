@@ -1,5 +1,6 @@
 <template>
   <section class="about">
+    <RandomCatPic mission="About us" />
     <h1 class="content">
       Welcome to Restful Retreat Shelter! We are a non-profit animal shelter
       located in the heart of Pittsburgh, PA. Our mission is to provide a safe
@@ -13,28 +14,28 @@
       We are proud to be a part of the Pittsburgh community and are committed to
       making a difference in the lives of animals and the people who love them.
       Whether you're looking to adopt a new furry friend or support our mission
-      through volunteering, we invite you to join us on our journey
-      to help these beautiful fur babies find their forever homes. Thank you for
+      through volunteering, we invite you to join us on our journey to help
+      these beautiful fur babies find their forever homes. Thank you for
       considering Restful Retreat Shelter as your trusted partner in animal
       rescue and adoption.
     </h1>
     <NavBar />
-    <Social />
-    <Carousel />
+    <Carousel /> 
     <Footer />
   </section>
 </template>
 
 <script>
 import NavBar from "../components/NavBar";
-import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
+import RandomCatPic from "../components/RandomCatPic.vue";
+
 export default {
   name: "about",
   components: {
     NavBar,
-    Social,
+    RandomCatPic,
     Carousel,
     Footer,
   },
@@ -43,16 +44,7 @@ export default {
 
 <style>
 .about {
-  background-image: url("https://cataas.com/cat");
-  background-size: 100% 100%;
-  background-position: center;
-  height: 130vh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
+  font-family: "sans-serif";
 }
 
 .content {
@@ -61,25 +53,13 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #a28f9d;
-  border-top: 15px solid #2F0A28;
-  border-bottom: 15px solid #2F0A28;
-  border-left: 15px solid #2F0A28;
-  border-right: 15px solid #2F0A28;
-  border-radius: 10px;
-  height: 80vh;
-  max-width: 800px;
   padding: 20px;
-  font-size: 24px;
+  font-size: 25px;
   line-height: 1.5;
   text-transform: uppercase;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  padding: 20px;
- 
+  height: 70vh;
+  margin-top: 0px;
+  margin-bottom: 0 !important;
 }
-
-
-.Social {
-  margin-top: 65px;
-}
-
 </style>

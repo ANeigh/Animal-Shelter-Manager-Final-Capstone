@@ -1,27 +1,33 @@
 <template>
   <div class="home">
     <NavBar />
-    <Social />
-    <Carousel />
+    <RandomCatPic
+      mission="Our Mission"
+      description="Caring for animals and getting them to their furrever home!"
+      link="/about"
+      linkText="Click if you want to know more "
+      linkLabel="about us"
+    />
+    <Carousel />  
     <Footer />
   </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar";
-import Social from "../components/Social";
 import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
 import animalService from "../services/AnimalService";
 import imgService from "../services/ImgService";
 import { shuffle } from 'lodash';
+import RandomCatPic from "../components/RandomCatPic.vue"
 
 
 export default {
   name: "home",
   components: {
     NavBar,
-    Social,
+    RandomCatPic,
     Carousel,
     Footer,
   },
@@ -48,18 +54,6 @@ export default {
 };
 </script>
 <style>
-.home {
- background-image: url("https://cataas.com/cat");
-  background-size: 100% 100%;
-  background-position: center;
-  height: 100vh;
-  margin-top: 0px;
-  
-}
-.loginButton {
-  display: flex;
-}
-
 
 
 </style>

@@ -2,30 +2,31 @@ package com.techelevator.model;
 
 public class Application {
 
-    private int app_id;
+    private int appId;
     private String username;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
+    private String phoneNumber;
     private String status;
 
     public Application() {}
 
     public Application(int app_id, String username, String first_name, String last_name, String email, String status) {
-        this.app_id = app_id;
+        this.appId = app_id;
         this.username = username;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = first_name;
+        this.lastName = last_name;
         this.email = email;
         this.status = status;
     }
 
     public int getApp_id() {
-        return app_id;
+        return appId;
     }
 
     public void setApp_id(int app_id) {
-        this.app_id = app_id;
+        this.appId = app_id;
     }
 
     public String getUsername() {
@@ -36,20 +37,20 @@ public class Application {
         this.username = username;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -68,13 +69,29 @@ public class Application {
         this.status = status;
     }
 
+    public int getAppId() {
+        return appId;
+    }
+
+    public void setAppId(int appId) {
+        this.appId = appId;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public String toString() {
         return "Application{" +
-                "id=" + app_id +
+                "id=" + appId +
                 "username" + username +
-                "first_name" + first_name +
-                "last_name" + last_name +
+                "first_name" + firstName +
+                "last_name" + lastName +
                 "email" + email +
                 "status" + status +
                 '}';

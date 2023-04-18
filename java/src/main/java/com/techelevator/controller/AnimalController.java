@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.AnimalDao;
 import com.techelevator.model.Animal;
+import com.techelevator.model.AnimalDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,5 +31,24 @@ public class AnimalController {
     @GetMapping(path = "/animal/{id}")
     public Animal getAnimalById(@PathVariable int animalId) {
         return animalDao.getAnimalById(animalId);
+    }
+
+    @GetMapping(path = "/animal/update/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Animal updateAnimal(@RequestBody AnimalDto animalDto, @PathVariable("id") Integer animalId) {
+        Animal animal = animalDao.getAnimalById(animalId);
+
+        animal.setName(animalDto.getName());
+        animal.setType(animalDto.getType());
+        animal.setDescription(animalDto.getDescription());
+        animal.setAge(animalDto.getAge());
+        animal.setGender(animalDto.getGender());
+        animal.setAdopted(animalDto.isAdopted());
+        animal.setBreed(animalDto.getBreed());
+        animal.setColor(animalDto.getColor());
+        animal.setTags(animalDto.getTags());
+
+        animalDao.updateAnimal(animal);
+        return animal;
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class JdbcApplicationDao implements ApplicationDao{
     @Override
-    public Application findApplicationById(int app_id) {
+    public Application findApplicationById(int appId) {
         return null;
     }
 
@@ -21,7 +21,7 @@ public class JdbcApplicationDao implements ApplicationDao{
     }
 
     @Override
-    public Application findApplicationByFullName(String first_name, String last_name) {
+    public Application findApplicationByFullName(String firstName, String lastName) {
         return null;
     }
 

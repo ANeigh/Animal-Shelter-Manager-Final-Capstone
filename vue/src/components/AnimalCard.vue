@@ -19,13 +19,11 @@ export default {
             return animalImages && animalImages.length > 0 ? animalImages[0].url : '';
         }
     }
-
 }
 </script>
 
 <style>
 .animal-card {
-
     border-radius: 10px;
     width: 250px;
     height: 300px;
@@ -39,11 +37,13 @@ export default {
 .animal-card .animal-name {
     font-size: 1.5rem;
     text-align: center;
+    color: #235789;
 }
 
 .animal-card .animal-breed {
     font-size: 1rem;
     text-align: center;
+    color: black;
 }
 
 .animal-image {

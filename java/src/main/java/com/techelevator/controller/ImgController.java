@@ -29,7 +29,7 @@ public class ImgController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/imgs")
-    public Img createImg() {
-        return null;
+    public int createImg(@RequestBody Img img) {
+        return imgDao.create(img.getUrl(),img.getAnimalId());
     }
 }

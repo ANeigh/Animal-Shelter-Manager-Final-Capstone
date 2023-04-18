@@ -46,6 +46,7 @@
   background-color: #2f0a28;
   padding: 10px 0 20px;
   color:mintcream;
+    font-family: "sans-serif";
 }
 
 .Ql-title {

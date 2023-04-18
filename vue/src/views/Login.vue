@@ -1,7 +1,7 @@
 <template>
   <div id="login">
+    <RandomCatPic mission="Welcome Back Please Sign In" />
     <form @submit.prevent="login">
-     
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -21,13 +21,15 @@
         <input type="password" id="password" v-model="user.password" required />
         <button type="submit">Sign in</button>
         <p>
-          <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link>
+          <router-link :to="{ name: 'register' }"
+            >Need an account? Sign up.</router-link
+          >
         </p>
       </div>
     </form>
-     <NavBar />
+    <NavBar />
     <!-- <PetCarousel /> -->
-    <Footer /> 
+    <Footer />
   </div>
 </template>
 
@@ -36,12 +38,13 @@ import Footer from "../components/Footer.vue";
 import NavBar from "../components/NavBar.vue";
 // import PetCarousel from "../components/PetCarousel.vue";
 import authService from "../services/AuthService";
-
+import RandomCatPic from "../components/RandomCatPic.vue";
 
 export default {
   name: "login",
   components: {
     NavBar,
+    RandomCatPic,
     // PetCarousel,
     Footer,
   },
@@ -73,33 +76,23 @@ export default {
           }
         });
     },
-    methods: {
-      
-    },
-    created() {
-    }
+    methods: {},
+    created() {},
   },
 };
 </script>
 
 <style scoped>
-/* #login {
-  background-image: url("https://cataas.com/cat");
-  background-size: 100% 100%;
-  background-position: center;
-  height: 100vh;
-  margin-top: 0px;
-  position: relative;
-}  */
 .form-input-group {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 60vh;
+  height: 50vh;
+  background: #a28f9d;
 }
+
 label {
   margin-right: 0.5rem;
 }
-
 </style>

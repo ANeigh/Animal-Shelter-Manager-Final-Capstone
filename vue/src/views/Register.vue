@@ -102,18 +102,10 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 60vh;
+   background: #a28f9d;
 }
 label {
   margin-right: 0.5rem;
 }
-/* .text-center {
-  background-image: url("https://cataas.com/cat");
-  background-size: 100% 100%;
-  background-position: center;
-  height: 100vh;
-  margin-top: 0px;
-  position: relative;
- 
-} */
 
 </style>

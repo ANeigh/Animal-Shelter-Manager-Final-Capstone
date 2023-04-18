@@ -61,8 +61,9 @@ export default {
   align-items: center;
   width: 100%;
   max-width: 100%;
-  padding-top: 150px;
+  padding-top: 90px;
   background: #235789;
+    font-family: "sans-serif";
 }
 
 .CatImage {

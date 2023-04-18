@@ -85,12 +85,12 @@ export default {
 
 <style>
 .navbar {
-  font-size: 35px;
+  font-size: 25px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
-  background: #8BAAAD;
+  background: #7C909E;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -98,11 +98,10 @@ export default {
 .navbar-brand {
   margin-left: 20px;
   margin-right: 20px;
-  padding: 10px 0;
 }
 
 .navButtons {
-  padding: 10px 20px;
+  padding: 5px 20px;
   margin: 0 10px;
 }
 
@@ -112,9 +111,9 @@ export default {
   text-decoration: none;
 }
 
+
 .PicText {
   color: #2F0A28;
-  font-size: 30px;
   font-weight: bold;
   margin: 0;
   padding: 20px;
@@ -122,15 +121,13 @@ export default {
 
 .navbar-brand img {
   height: 100%;
-  max-height: 170px;
+  max-height: 80px;
 }
 .signupbutton {
- 
   font-size: 20px;
 }
 
 .loginbutton {
- 
   font-size: 20px;
 }
 
@@ -144,4 +141,5 @@ export default {
   color: #235789;
   text-decoration: none;
 }
+
 </style>

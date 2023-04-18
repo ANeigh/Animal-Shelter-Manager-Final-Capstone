@@ -53,11 +53,6 @@ export default {
 };
 </script>
 <style>
-.home {
-  background: mintcream;
-}
-
-
 
 
 </style>

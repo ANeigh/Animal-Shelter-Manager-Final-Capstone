@@ -20,14 +20,14 @@
       rescue and adoption.
     </h1>
     <NavBar />
-    <!-- <Carousel /> -->
+    <Carousel /> 
     <Footer />
   </section>
 </template>
 
 <script>
 import NavBar from "../components/NavBar";
-// import Carousel from "../components/PetCarousel.vue";
+import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
 import RandomCatPic from "../components/RandomCatPic.vue";
 
@@ -36,7 +36,7 @@ export default {
   components: {
     NavBar,
     RandomCatPic,
-    // Carousel,
+    Carousel,
     Footer,
   },
 };
@@ -44,9 +44,7 @@ export default {
 
 <style>
 .about {
-  background: mintcream;
-   padding: 0;
-
+  font-family: "sans-serif";
 }
 
 .content {
@@ -62,8 +60,6 @@ export default {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   height: 70vh;
   margin-top: 0px;
-  margin-bottom: 0px;
-  
+  margin-bottom: 0 !important;
 }
-
 </style>

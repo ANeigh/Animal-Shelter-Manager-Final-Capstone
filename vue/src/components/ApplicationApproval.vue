@@ -34,7 +34,11 @@ of pending applications, but not remove the data from the database.-->
             />
           </td>
           <td>
-            <input type="text" id="roleFilter" v-model="filter.role" />
+            <select id="roleFilter" v-model="filter.role">
+              <option value>Show All</option>
+              <option value="Admin">Admin</option>
+              <option value="Volunteer">Volunteer</option>
+            </select>
           </td>
           <td>
             <input
@@ -123,44 +127,55 @@ export default {
         phone: "",
         status: "",
         username: "",
+        role: "",
       },
     };
   },
   computed: {
     filteredList() {
-      let filteredApps = this.users;
-      if (this.filter.firstName != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.firstName
-            .toLowerCase()
-            .includes(this.filter.firstName.toLowerCase())
-        );
-      }
-      if (this.filter.lastName != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.lastName
-            .toLowerCase()
-            .includes(this.filter.lastName.toLowerCase())
-        );
-      }
-      if (this.filter.username != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.username
-            .toLowerCase()
-            .includes(this.filter.username.toLowerCase())
-        );
-      }
-      if (this.filter.emailAddress != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.emailAddress
-            .toLowerCase()
-            .includes(this.filter.emailAddress.toLowerCase())
-        );
-      }
-      if (this.filter.status != "") {
+      let filteredApps = this.$store.state.applications;
+      if (this.filter.role != "") {
         filteredApps = filteredApps.filter(
-          (user) => user.status === this.filter.status
+          (user) => user.role === this.filter.role
         );
+        if (this.filter.firstName != "") {
+          filteredApps = filteredApps.filter((user) =>
+            user.firstName
+              .toLowerCase()
+              .includes(this.filter.firstName.toLowerCase())
+          );
+        }
+        if (this.filter.lastName != "") {
+          filteredApps = filteredApps.filter((user) =>
+            user.lastName
+              .toLowerCase()
+              .includes(this.filter.lastName.toLowerCase())
+          );
+        }
+        if (this.filter.email != "") {
+          filteredApps = filteredApps.filter((user) =>
+            user.emailAddress
+              .toLowerCase()
+              .includes(this.filter.emailAddress.toLowerCase())
+          );
+        }
+        if (this.filter.phone != "") {
+          filteredApps = filteredApps.filter((user) =>
+            user.phone.toLowerCase().includes(this.filter.phone.toLowerCase())
+          );
+        }
+        if (this.filter.username != "") {
+          filteredApps = filteredApps.filter((user) =>
+            user.username
+              .toLowerCase()
+              .includes(this.filter.username.toLowerCase())
+          );
+        }
+        if (this.filter.status != "") {
+          filteredApps = filteredApps.filter(
+            (user) => user.status === this.filter.status
+          );
+        }
       }
       return filteredApps;
     },

@@ -7,6 +7,10 @@ export default {
 
     getImgsByPet(animalId) {
         return axios.get("/imgs/" + animalId);
+    },
+
+    createImg(img) {
+        return axios.post("/imgs", img);
     }
 
 }

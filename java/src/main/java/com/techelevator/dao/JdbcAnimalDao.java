@@ -125,14 +125,13 @@ public class JdbcAnimalDao implements AnimalDao{
 
     @Override
     public int create(Animal animal) {
-        String sql = "INSERT INTO animal (animal_id, name, type, description, age, gender, adopted, breed, color," +
-                "added_by) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING animal_id";
+        String sql = "INSERT INTO animals (animal_id, name, type, description, age, gender, adopted, breed, tags, color, added_by) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING animal_id";
         int animalId;
         try {
 
-            animalId = jdbcTemplate.queryForObject(sql, Integer.class, animal.getAnimalId(), animal.getName(),
-                    animal.getType(), animal.getDescription(), animal.getAge(), animal.getAge(), animal.getGender(),
-                    animal.isAdopted(), animal.getBreed(), animal.getColor(), animal.getAddedBy());
+            animalId = jdbcTemplate.queryForObject(sql, Integer.class, animal.getName(),
+                    animal.getType(), animal.getDescription(), animal.getAge(), animal.getGender(),
+                    animal.isAdopted(), animal.getBreed(), animal.getTags(), animal.getColor(), animal.getAddedBy());
         } catch(DataAccessException | NullPointerException e) {
             throw new NullPointerException("Unable to create new Animal");
         }

@@ -14,6 +14,7 @@ import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
 import animalService from "../services/AnimalService";
 import imgService from "../services/ImgService";
+import { shuffle } from 'lodash';
 
 
 export default {
@@ -27,7 +28,7 @@ export default {
   methods: {
     getAnimals() {
       animalService.getAllAnimals().then(response => {
-        this.$store.commit("SET_ANIMALS", response.data);
+        this.$store.commit("SET_ANIMALS", shuffle(response.data));
       });
     },
     getImgs() {

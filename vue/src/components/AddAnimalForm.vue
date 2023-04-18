@@ -156,6 +156,7 @@ export default {
         tags: "",
         type: "",
         age: "",
+        gender: "",
         description: "",
       },
       newImg: {
@@ -183,8 +184,17 @@ export default {
                   const imgId = response.data;
                   const animal = {
                     animalId: animalId,
-                    
-                  }
+                    addedBy: "",
+                    name: this.newAnimal.name,
+                    type: this.newAnimal.type,
+                    description: this.newAnimal.description,
+                    age: this.newAnimal.age,
+                    gender: this.newAnimal.gender,
+                    adopted: false,
+                    breed: this.newAnimal.breed,
+                    color: this.newAnimal.color,
+                    tags: this.newAnimal.tags,
+                  };
                   const img = {
                     imgId: imgId,
                     url: newImg.url,

@@ -33,7 +33,7 @@ public class AnimalController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "animals")
+    @PostMapping(path = "/animals")
     public int createAnimal(@RequestBody Animal animal) {
         return animalDao.create(animal);
     }

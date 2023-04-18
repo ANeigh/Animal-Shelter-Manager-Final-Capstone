@@ -1,6 +1,7 @@
 <template>
   <section class="footer">
     <div class="quick-links">
+      <p class="Ql-title">Quick Links</p>
       <p class="footer-item">
         <router-link class="navButtons" to="/about">About Us</router-link>
       </p>
@@ -39,41 +40,69 @@
 <style>
 .footer {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   background-color: #2f0a28;
-  color: #f4fff8;
-  padding: 20px;
-  text-align: center;
+  padding: 10px 0 20px;
+  color:mintcream;
 }
-.footer-item {
-  margin: 0;
-  padding: 5px 0;
+
+.Ql-title {
+  text-decoration: underline;
   font-size: 20px;
-  display: block;
-  text-align: left;
+  margin-bottom: 10px;
 }
+
+.quick-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.footer-item {
+  padding: 3px 0;
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.navButtons {
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.navButtons:hover {
+  color: #235789;
+}
+
 .footer-contact {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: auto;
-}
-.Social {
-  margin-left: auto;
-}
-.SocialPic {
-  width: 100px;
-  height: auto;
-  margin-top: 10px;
-}
-.SocialText {
-  padding: 5px 0;
-  font-size: 20px;
-  display: flex;
   justify-content: center;
-  padding: 5px;
+  align-items: center;
+  margin-right: 30px;
 }
+
+.Social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.SocialText {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}
+
+.SocialPic {
+  
+  margin-top: 20px;
+  width: 150px;
+}
+
 </style>

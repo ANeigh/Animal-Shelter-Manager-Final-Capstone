@@ -32,9 +32,8 @@
       </div>
     </form>
     <NavBar /> 
-    <PetCarousel />
+    <!-- <PetCarousel /> -->
     <Footer />
-    <Social/>
   </div>
 </template>
 
@@ -42,15 +41,13 @@
 import NavBar from "../components/NavBar.vue";
 import authService from "../services/AuthService";
 import Footer from "../components/Footer.vue";
-import PetCarousel from "../components/PetCarousel.vue";
-import Social from "../components/Social.vue";
+// import PetCarousel from "../components/PetCarousel.vue";
 
 export default {
   components: {
     NavBar,
     Footer,
-    PetCarousel,
-    Social
+    // PetCarousel,
   },
   name: "register",
   data() {
@@ -109,7 +106,7 @@ export default {
 label {
   margin-right: 0.5rem;
 }
-.text-center {
+/* .text-center {
   background-image: url("https://cataas.com/cat");
   background-size: 100% 100%;
   background-position: center;
@@ -117,6 +114,6 @@ label {
   margin-top: 0px;
   position: relative;
  
-}
+} */
 
 </style>

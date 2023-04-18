@@ -26,8 +26,7 @@
       </div>
     </form>
      <NavBar />
-    <Social />
-    <PetCarousel />
+    <!-- <PetCarousel /> -->
     <Footer /> 
   </div>
 </template>
@@ -35,8 +34,7 @@
 <script>
 import Footer from "../components/Footer.vue";
 import NavBar from "../components/NavBar.vue";
-import PetCarousel from "../components/PetCarousel.vue";
-import Social from "../components/Social.vue";
+// import PetCarousel from "../components/PetCarousel.vue";
 import authService from "../services/AuthService";
 
 
@@ -44,8 +42,7 @@ export default {
   name: "login",
   components: {
     NavBar,
-    Social,
-    PetCarousel,
+    // PetCarousel,
     Footer,
   },
   data() {
@@ -86,14 +83,14 @@ export default {
 </script>
 
 <style scoped>
-#login {
+/* #login {
   background-image: url("https://cataas.com/cat");
   background-size: 100% 100%;
   background-position: center;
   height: 100vh;
   margin-top: 0px;
   position: relative;
-} 
+}  */
 .form-input-group {
   display: flex;
   justify-content: center;

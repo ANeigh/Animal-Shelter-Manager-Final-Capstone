@@ -1,4 +1,5 @@
 <template>
+  
   <section class="content" id="volunteer">
     <div>
       <h2>
@@ -18,6 +19,7 @@
     <div>
       <VolunteerDir />
     </div>
+    <Footer />
   </section>
 </template>
 

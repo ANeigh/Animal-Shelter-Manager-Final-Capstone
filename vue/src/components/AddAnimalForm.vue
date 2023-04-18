@@ -99,14 +99,15 @@
 
         <div class="field">
           <label class="label">Picture</label>
-          <div class="control">
+          <button @click="openUploadModal">Upload files</button>
+          <!--<div class="control">
             <input
               class="input"
               type="text"
               placeholder="URL input"
               v-model="newImg.url"
             />
-          </div>
+          </div>-->
         </div>
 
         <div class="field">
@@ -124,7 +125,7 @@
           <div class="control">
             <button
               class="button is-link"
-              @click.prevent="toggleForm, addNewAnimal, clearForm"
+              @click.prevent="addNewAnimal"
             >
               Submit
             </button>
@@ -148,6 +149,7 @@ export default {
   name: "add-animal-form",
   data() {
     return {
+      url: '',
       showForm: false,
       newAnimal: {
         name: "",
@@ -160,11 +162,23 @@ export default {
         description: "",
       },
       newImg: {
-        url: "",
+        url: '',
       },
     };
   },
   methods: {
+    openUploadModal() {
+      window.cloudinary.openUploadWidget(
+        { cloud_name: 'dlh24zlzm',
+          upload_preset: 'ml_default'
+        },
+        (error, result) => {
+         // if (!error && result && result.event === "success") {
+            console.log('Done uploading..: ', result.info);  
+            this.newImg.url = result.url;
+          //}
+        }).open();
+    },
     toggleForm() {
       this.showForm = !this.showForm;
       this.clearForm();
@@ -176,9 +190,9 @@ export default {
         .then((response) => {
           if (response.status === 201) {
             const animalId = response.data;
-            const newImg = { animalId: animalId, url: this.newImg.url };
+            const newImage = { animalId: animalId, url: this.newImg.url };
             imgService
-              .createImg(newImg)
+              .createImg(newImage)
               .then((response) => {
                 if (response.status === 201) {
                   const imgId = response.data;
@@ -197,8 +211,8 @@ export default {
                   };
                   const img = {
                     imgId: imgId,
-                    url: newImg.url,
-                    animalId: newImg.animalId,
+                    url: newImage.url,
+                    animalId: newImage.animalId,
                   };
                   this.$store.commit("ADD_ANIMAL", animal);
                   this.$store.commit("ADD_IMG", img);
@@ -212,6 +226,8 @@ export default {
         .catch((error) => {
           this.handleErrorResponse(error, "Error adding new animal.");
         });
+        this.clearForm();
+        this.toggleForm();
     },
     clearForm() {
       this.newAnimal.name = "";

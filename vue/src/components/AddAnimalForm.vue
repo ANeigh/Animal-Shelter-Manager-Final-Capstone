@@ -177,7 +177,7 @@ export default {
           if (!error && result && result.event === "success") {
             console.log('Done uploading..: ', result.info); 
             if (result.info.url) {
-              this.newImg.url = result.info.url;
+              this.newImg.yurl = result.info.url;
               console.log('URL:', this.newImg.url);
             } 
           }

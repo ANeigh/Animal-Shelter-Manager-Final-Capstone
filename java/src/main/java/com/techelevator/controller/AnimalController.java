@@ -39,7 +39,7 @@ public class AnimalController {
         return animalDao.create(animal);
     }
 
-    @GetMapping(path = "/animal/update/{id}")
+    @GetMapping(path = "/animals/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Animal updateAnimal(@RequestBody AnimalDto animalDto, @PathVariable("id") Integer animalId) {
         Animal animal = animalDao.getAnimalById(animalId);

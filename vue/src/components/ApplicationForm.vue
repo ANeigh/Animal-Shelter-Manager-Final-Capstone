@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="appform">
     <form @submit.prevent="saveApp">
       <!-- Bulma form layout -->
       <div class="field">
@@ -145,6 +145,9 @@ export default {
 </script>
 
 <style>
+.appform {
+padding: 20px;
+}
 
 .label {
   text-align: center;

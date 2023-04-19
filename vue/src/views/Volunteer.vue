@@ -16,7 +16,7 @@
       <!-- <VolunteerDir /> -->
     </div>
     <div class="app-approval-container">
-      <ApplicationApproval />
+      <!-- <ApplicationApproval /> -->
     </div>
     <Footer />
   </section>
@@ -26,7 +26,7 @@
 import NavBar from "../components/NavBar";
 import ApplicationForm from "../components/ApplicationForm.vue";
 // import VolunteerDir from "../components/VolunteerDir.vue";
-import ApplicationApproval from "../components/ApplicationApproval.vue"
+// import ApplicationApproval from "../components/ApplicationApproval.vue"
 import Footer from "../components/Footer.vue";
 import RandomCatPic from "../components/RandomCatPic.vue";
 
@@ -37,7 +37,7 @@ export default {
     RandomCatPic,
     ApplicationForm,
     // VolunteerDir,
-    ApplicationApproval,
+    // ApplicationApproval,
     Footer
   },
   
@@ -49,6 +49,7 @@ export default {
   background: #a28f9d;
   font-family: "sans-serif";
   font-size: 20px;
+  padding: auto;
 }
 
 .volunteer-content {

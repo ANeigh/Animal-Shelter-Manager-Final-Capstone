@@ -7,7 +7,7 @@
 of pending applications, but not remove the data from the database.-->
 
   <section class="appapproval">
-    <h1>Applications</h1>
+    <h1 class="appapproval-title">Applications</h1>
     <table class="table is-hover">
       <thead>
         <tr>
@@ -281,5 +281,10 @@ tr.rejected {
 }
 tr.pending {
   background-color: 235789;
+}
+.appapproval-title {
+  font-size: 35px;
+  padding-bottom: 10px;
+  text-decoration: underline;
 }
 </style>

@@ -6,8 +6,8 @@
   <!-- Declining an application should remove the application from list 
 of pending applications, but not remove the data from the database.-->
 
-  <section>
-    <h1>Applications</h1>
+  <section class="appapproval">
+    <h1 class="appapproval-title">Applications</h1>
     <table class="table is-hover">
       <thead>
         <tr>
@@ -114,6 +114,13 @@ of pending applications, but not remove the data from the database.-->
         Mark Pending
       </button>
       <button
+        class="button is-link"
+        v-bind:disabled="selectedApps.length === 0"
+        v-on:click="changeRole"
+      >
+        Change User Role
+      </button>
+      <button
         class="button is-link is-outlined"
         type="reset"
         v-bind:disabled="isFilterBlank"
@@ -214,30 +221,39 @@ export default {
     getUserRole(username) {
       return this.getUserFromApp(username).role;
     },
-    changeRole(username) {
-      const app = this.findAppByUsername(username);
-      app.role = app.role === "Admin" ? "Volunteer" : "Admin";
+    changeRole() {
+      this.selectedApps.forEach((appID) => {
+        const appToChange = this.findAppById(appID);
+        const user = this.getUserFromApp(appToChange.username);       
+        this.$store.commit("CHANGE_USER_ROLE", user);
+      });
+      this.selectedApps = [];
     },
     findAppById(appID) {
       return this.$store.state.applications.find((app) => app.id === appID);
     },
 
-    // These 3 functions need to send data back to the $store!!
     approveApp() {
       this.selectedApps.forEach((appID) => {
-        this.findAppById(appID).status = "Approved";
+        const appToChange = this.findAppById(appID);
+        appToChange.status = "Approved";
+        this.$store.commit("APPROVE_APP", appToChange);
       });
       this.selectedApps = [];
     },
     rejectApp() {
       this.selectedApps.forEach((appID) => {
-        this.findAppById(appID).status = "Rejected";
+        const appToChange = this.findAppById(appID);
+        appToChange.status = "Rejected";
+        this.$store.commit("REJECT_APP", appToChange);
       });
       this.selectedApps = [];
     },
     pendingApp() {
       this.selectedApps.forEach((appID) => {
-        this.findAppById(appID).status = "Pending";
+        const appToChange = this.findAppById(appID);
+        appToChange.status = "Pending";
+        this.$store.commit("PENDING_APP", appToChange);
       });
       this.selectedApps = [];
     },
@@ -268,10 +284,23 @@ export default {
 </script>
 
 <style>
+.appapproval {
+   padding-top: 120px;
+   height: 65vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
 tr.rejected {
   background-color: rgb(190, 190, 190);
 }
 tr.pending {
   background-color: 235789;
+}
+.appapproval-title {
+  font-size: 35px;
+  padding-bottom: 10px;
+  text-decoration: underline;
 }
 </style>

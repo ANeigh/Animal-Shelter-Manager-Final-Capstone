@@ -16,7 +16,7 @@
         >
       </p>
       <p class="footer-item">
-        <router-link class="navButtons" to="/register">Register</router-link>
+        <router-link class="navButtons" to="/volunteer">Become A Volunteer</router-link>
       </p>
     </div>
     <div class="footer-contact">

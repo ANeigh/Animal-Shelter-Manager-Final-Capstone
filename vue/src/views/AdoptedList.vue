@@ -1,6 +1,7 @@
 <template>
   <section class="adoptedlist">
     <NavBar />
+    <RandomCatPic mission="These Fur Babies Found A FurrEver Home" />
     <div class="animal-container">
       <animal-card
         v-bind:animal="animal"
@@ -16,11 +17,13 @@
 import NavBar from "../components/NavBar";
 import AnimalCard from "../components/AnimalCard.vue";
 import Footer from "../components/Footer.vue";
+import RandomCatPic from "../components/RandomCatPic.vue";
 
 export default {
   name: "adoptedlistview",
   components: {
     NavBar,
+    RandomCatPic,
     AnimalCard,
     Footer,
   },

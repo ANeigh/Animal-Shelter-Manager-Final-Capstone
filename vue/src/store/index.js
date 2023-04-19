@@ -98,6 +98,9 @@ export default new Vuex.Store({
     PENDING_APP(state, app) {
       app.status = "Pending";
     },
+    ADD_NEW_USER(state, newUser) {
+state.users.push(newUser);
+    },
     CHANGE_USER_ROLE(state, user) {
       user.role = user.role === "Admin" ? "Volunteer": "Admin";
     },

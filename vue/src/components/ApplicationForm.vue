@@ -69,7 +69,7 @@
         <div class="control has-text-centered">
           <button class="button is-link" type="submit">Submit</button>
         </div>
-        <div class="control has-text-centered" style="margin-top: 10px;">
+        <div class="control has-text-centered" style="margin-top: 10px">
           <button class="button is-link is-light" v-on:click="resetForm">
             Cancel
           </button>
@@ -90,7 +90,11 @@ export default {
         phone: "",
         status: "Pending",
         username: "",
+      },
+      newUser: {
+        username: "",
         password: "",
+        role: "Volunteer",
       },
     };
   },
@@ -114,8 +118,10 @@ export default {
   methods: {
     saveApp() {
       this.newApp.username = this.setUsername;
-      this.newApp.password = this.setPassword;
+      this.newUser.username = this.setUsername;
+      this.newUser.password = this.setPassword;
       this.$store.commit("ADD_NEW_APP", this.newApp);
+      this.$store.commit("ADD_NEW_USER", this.newUser);
       this.newApp = {
         firstName: "",
         lastName: "",
@@ -124,6 +130,11 @@ export default {
         status: "Pending",
         username: "",
         password: "",
+      };
+      this.newUser = {
+        username: "",
+        password: "",
+        role: "Volunteer",
       };
     },
     resetForm() {
@@ -143,7 +154,7 @@ export default {
 
 <style>
 .appform {
-padding: 20px;
+  padding: 20px;
 }
 
 .label {
@@ -154,5 +165,4 @@ padding: 20px;
 .input {
   width: 30%;
 }
-
 </style>

@@ -42,28 +42,34 @@ export default {
 .images {
   width: auto;
   height: auto;
-  max-width: 600px;
+  max-width: 500px;
   max-height: 600px;
+  min-width: 400px;
+  min-height: 400px;
   align-content: center;
   justify-content: center;
   margin: 0 auto;
+  padding-top: 70px;
 }
 .information {
     margin: 0 auto;
     text-align: center;
+    padding-top: 150px;
+    padding-left: 50px;    
 }
 .name {
     align-content: center;
     justify-content: center;
     margin: 0 auto;
-    background-color: #7C909E
+    background-color: #7C909E;
 }
 .description {
     background-color:#a28f9d;
 }
 .section {
-    background-color: #235789;
-
+    display: flex;
+   background-color: #235789;
+   flex-wrap: wrap;
 }
 
 

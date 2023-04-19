@@ -3,14 +3,14 @@
   <section class="volunteerdirectory">
     <h1 class="vd-title">Volunteer Directory</h1>
     <ul style="list-style-type:none">
-      <li>Volunteer test dummy</li>
+      <!-- <li>Volunteer test dummy</li> -->
       <!-- <li v-for="user in $store.state.users" v-bind:key="user.username"> -->
       <li v-for="user in listApplicationUsers" v-bind:key="user.userID">
-        <b>{{ user.firstName }} {{ user.lastName }}</b
+        <b>Name: {{ user.firstName }} {{ user.lastName }}</b
         ><br />
-        {{ user.role }}<br />
-        {{ user.email }}<br />
-        {{ user.phone }}
+        Role : {{ user.role }}<br />
+        Email: {{ user.email }}<br />
+        Phone: {{ user.phone }}
       </li>
     </ul>
   </section>
@@ -61,18 +61,28 @@ export default {
 
 <style>
 .volunteerdirectory {
-   height: 70vh;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-around;
    align-items: center; 
    font-size: 25px;
    font-family: "sans-serif";
+   height: 70vh;
 }
 
 .vd-title {
   font-size: 30px;
   text-decoration: underline;
 }
+
+ul {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+.volunteerdirectory li {
+  margin: 30px;
+}
+
 
 </style>

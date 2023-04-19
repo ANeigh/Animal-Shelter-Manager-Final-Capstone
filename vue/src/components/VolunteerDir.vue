@@ -1,6 +1,6 @@
 <template>
   <!-- As a volunteer, I want a listing of other volunteers and admins with contact info.-->
-  <section>
+  <section class="volunteerdirectory">
     <h1>Volunteer Directory</h1>
     <ul style="list-style-type:none">
       <li>Volunteer test dummy</li>
@@ -60,4 +60,10 @@ export default {
 </script>
 
 <style>
+.volunteerdirectory {
+   padding-top: 120px;
+   height: 70vh;
+   display: flex;
+   justify-content: center;
+}
 </style>

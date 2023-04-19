@@ -6,7 +6,7 @@
   <!-- Declining an application should remove the application from list 
 of pending applications, but not remove the data from the database.-->
 
-  <section>
+  <section class="appapproval">
     <h1>Applications</h1>
     <table class="table is-hover">
       <thead>
@@ -268,6 +268,14 @@ export default {
 </script>
 
 <style>
+.appapproval {
+   padding-top: 120px;
+   height: 65vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
 tr.rejected {
   background-color: rgb(190, 190, 190);
 }

@@ -89,6 +89,18 @@ export default new Vuex.Store({
     ADD_NEW_APP(state, newApp) {
       state.applications.push(newApp);
     },
+    APPROVE_APP(state, app) {
+      app.status = "Approved";
+    },
+    REJECT_APP(state, app) {
+      app.status = "Rejected";
+    },
+    PENDING_APP(state, app) {
+      app.status = "Pending";
+    },
+    CHANGE_USER_ROLE(state, user) {
+      user.role = user.role === "Admin" ? "Volunteer": "Admin";
+    },
     SET_ANIMALS(state, animals) {
       state.animals = animals;
     },

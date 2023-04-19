@@ -1,8 +1,8 @@
 <template>
-  <section v-if="isLoggedIn">
+  <section class="section" v-if="isLoggedIn">
     <div class="container">
       <div class="header">
-        <button class="button is-link is-outlined" @click="toggleForm">
+        <button id ="bulmaSucks" class="button is-primary is-rounded button-color:white" @click="toggleForm">
           Update Pet Listing
         </button>
       </div>
@@ -229,12 +229,19 @@ export default {
 .container {
   display: flex;
   width: 400px;
-  margin-top: 200px;
+  margin-top: 60px;
   margin-bottom: 20px;
   flex-direction: column;
   align-content: left;
 }
 .header {
   text-align: center;
+}
+.section {
+     background-color: #235789;
+}
+#bulmaSucks { 
+  color: #235789;
+  font-weight: bold;
 }
 </style>

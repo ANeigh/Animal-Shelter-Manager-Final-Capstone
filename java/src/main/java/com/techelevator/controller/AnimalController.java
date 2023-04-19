@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.AnimalDao;
 import com.techelevator.model.Animal;
+import com.techelevator.model.AnimalDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

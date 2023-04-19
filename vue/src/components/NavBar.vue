@@ -73,7 +73,7 @@
                 >
               </strong>
             </a>
-            <a class="button is-light">
+            <a class="button is-primary">
               <router-link
                 class="loginbutton"
                 v-bind:to="{ name: 'login' }"
@@ -153,6 +153,8 @@ export default {
 
 .loginbutton {
   font-size: 20px;
+  font-weight: bold;
+
 }
 
 .loginbutton:hover {

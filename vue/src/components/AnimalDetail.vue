@@ -1,17 +1,21 @@
 <template>
-  <section class="section">
+  <section class="section2">
+      <div>
     <carousel class="images">
       <slide v-for="(imgs, index) in getAnimalImages(animal.animalId)"
       v-bind:key="index"> <img :src="imgs.url"> </slide>
     </carousel>
     <div class="information">
-    <p class="name">Name: {{ animal.name }}</p>
-    <p class = "name">Breed: {{ animal.breed }}</p>
-    <p class = "name">Gender: {{ animal.gender }}</p>
-    <p class = "name">Age: {{ animal.age }}</p>
-    <p class = "name">Color: {{ animal.color }}</p>
-    <p class = "name" v-show="animal.tags">Tags: {{ animal.tags }}</p>
-    <p class = "description">{{ animal.description }}</p>
+    <p>Breed: {{ animal.breed }}</p>
+    <p>Gender: {{ animal.gender }}</p>
+    <p>Age: {{ animal.age }}</p>
+    <p>Color: {{ animal.color }}</p>
+    <p v-show="animal.tags">Tags: {{ animal.tags }}</p>
+    </div>
+    </div>
+    <div class="description">
+    <p class="name">{{ animal.name }}</p>
+    <p class="description">{{ animal.description }}</p>
     </div>
   </section>
 </template>
@@ -42,7 +46,7 @@ export default {
 .images {
   width: auto;
   height: auto;
-  max-width: 500px;
+  max-width: 600px;
   max-height: 600px;
   min-width: 400px;
   min-height: 400px;
@@ -54,22 +58,18 @@ export default {
 .information {
     margin: 0 auto;
     text-align: center;
-    padding-top: 150px;
-    padding-left: 50px;    
+    background-color: #7C909E;
 }
 .name {
-    align-content: center;
-    justify-content: center;
-    margin: 0 auto;
-    background-color: #7C909E;
+    background-color: #a28f9d;
+    font-size: 50px;
 }
 .description {
     background-color:#a28f9d;
 }
-.section {
+.section2 {
     display: flex;
-   background-color: #235789;
-   flex-wrap: wrap;
+   background-color: #7c909e;
 }
 
 

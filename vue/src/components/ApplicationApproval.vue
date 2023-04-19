@@ -34,7 +34,11 @@ of pending applications, but not remove the data from the database.-->
             />
           </td>
           <td>
-            <input type="text" id="roleFilter" v-model="filter.role" />
+            <select id="roleFilter" v-model="filter.role">
+              <option value>Show All</option>
+              <option value="Admin">Admin</option>
+              <option value="Volunteer">Volunteer</option>
+            </select>
           </td>
           <td>
             <input
@@ -66,7 +70,7 @@ of pending applications, but not remove the data from the database.-->
           </td>
         </tr>
         <tr
-          v-for="app in filteredApps"
+          v-for="app in filteredList"
           v-bind:key="app.id"
           v-bind:class="{ rejected: app.status === 'Rejected' }"
         >
@@ -89,22 +93,33 @@ of pending applications, but not remove the data from the database.-->
     </table>
     <div class="all-actions">
       <button
+        class="button is-link is-success"
         v-bind:disabled="selectedApps.length === 0"
         v-on:click="approveApp"
       >
         Approve
       </button>
       <button
+        class="button is-link is-danger"
         v-bind:disabled="selectedApps.length === 0"
         v-on:click="rejectApp"
       >
         Reject
       </button>
       <button
+        class="button is-link is-warning"
         v-bind:disabled="selectedApps.length === 0"
         v-on:click="pendingApp"
       >
         Mark Pending
+      </button>
+      <button
+        class="button is-link is-outlined"
+        type="reset"
+        v-bind:disabled="isFilterBlank"
+        v-on:click="clearFilters"
+      >
+        Clear filters
       </button>
     </div>
   </section>
@@ -123,43 +138,67 @@ export default {
         phone: "",
         status: "",
         username: "",
+        role: "",
       },
     };
   },
   computed: {
+    isFilterBlank() {
+      if (
+        this.filter.role == "" &&
+        this.filter.firstName == "" &&
+        this.filter.lastName == "" &&
+        this.filter.email == "" &&
+        this.filter.phone == "" &&
+        this.filter.username == "" &&
+        this.filter.status == ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     filteredList() {
-      let filteredApps = this.users;
+      let filteredApps = this.$store.state.applications;
+      if (this.filter.role != "") {
+        filteredApps = filteredApps.filter(
+          (app) => this.getUserRole(app.username) === this.filter.role
+        );
+      }
       if (this.filter.firstName != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.firstName
+        filteredApps = filteredApps.filter((app) =>
+          app.firstName
             .toLowerCase()
             .includes(this.filter.firstName.toLowerCase())
         );
       }
       if (this.filter.lastName != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.lastName
+        filteredApps = filteredApps.filter((app) =>
+          app.lastName
             .toLowerCase()
             .includes(this.filter.lastName.toLowerCase())
         );
       }
+      if (this.filter.email != "") {
+        filteredApps = filteredApps.filter((app) =>
+          app.email.toLowerCase().includes(this.filter.email.toLowerCase())
+        );
+      }
+      if (this.filter.phone != "") {
+        filteredApps = filteredApps.filter((app) =>
+          app.phone.toLowerCase().includes(this.filter.phone.toLowerCase())
+        );
+      }
       if (this.filter.username != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.username
+        filteredApps = filteredApps.filter((app) =>
+          app.username
             .toLowerCase()
             .includes(this.filter.username.toLowerCase())
         );
       }
-      if (this.filter.emailAddress != "") {
-        filteredApps = filteredApps.filter((user) =>
-          user.emailAddress
-            .toLowerCase()
-            .includes(this.filter.emailAddress.toLowerCase())
-        );
-      }
       if (this.filter.status != "") {
         filteredApps = filteredApps.filter(
-          (user) => user.status === this.filter.status
+          (app) => app.status === this.filter.status
         );
       }
       return filteredApps;
@@ -175,37 +214,54 @@ export default {
     getUserRole(username) {
       return this.getUserFromApp(username).role;
     },
-    // changeStatus(username) {
-    //     const app = this.findAppByUsername(username);
-    //     if (app.status === ""
-    // },
+    changeRole(username) {
+      const app = this.findAppByUsername(username);
+      app.role = app.role === "Admin" ? "Volunteer" : "Admin";
+    },
+    findAppById(appID) {
+      return this.$store.state.applications.find((app) => app.id === appID);
+    },
+
+    // These 3 functions need to send data back to the $store!!
     approveApp() {
-      this.selectedApps.forEach((userID) => {
-        this.findUserById(userID).status = "Approve";
+      this.selectedApps.forEach((appID) => {
+        this.findAppById(appID).status = "Approved";
       });
       this.selectedApps = [];
     },
     rejectApp() {
-      this.selectedApps.forEach((userID) => {
-        this.findUserById(userID).status = "Rejected";
+      this.selectedApps.forEach((appID) => {
+        this.findAppById(appID).status = "Rejected";
       });
       this.selectedApps = [];
     },
     pendingApp() {
-      this.selectedApps.forEach((userID) => {
-        this.findUserById(userID).status = "Pending";
+      this.selectedApps.forEach((appID) => {
+        this.findAppById(appID).status = "Pending";
       });
       this.selectedApps = [];
     },
+
     selectAll(event) {
       if (event.target.checked) {
         this.selectedApps = [];
-        this.users.forEach((user) => {
-          this.selectedApps.push(user.id);
+        this.$store.state.applications.forEach((app) => {
+          this.selectedApps.push(app.id);
         });
       } else {
         this.selectedApps = [];
       }
+    },
+    clearFilters() {
+      this.filter = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        status: "",
+        username: "",
+        role: "",
+      };
     },
   },
 };

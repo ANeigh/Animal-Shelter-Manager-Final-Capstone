@@ -1,10 +1,10 @@
 <template>
-  <section>
+  <section class="appform">
     <form @submit.prevent="saveApp">
       <!-- Bulma form layout -->
       <div class="field">
         <label class="label" for="first_name">First Name</label>
-        <div class="control">
+        <div class="control has-text-centered">
           <input
             class="input"
             type="text"
@@ -18,7 +18,7 @@
 
       <div class="field">
         <label class="label" for="last_name">Last Name</label>
-        <div class="control">
+        <div class="control has-text-centered">
           <input
             class="input"
             type="text"
@@ -32,7 +32,7 @@
 
       <div class="field">
         <label class="label">Email</label>
-        <div class="control has-icons-left">
+        <div class="control has-text-centered">
           <input
             class="input"
             type="email"
@@ -50,7 +50,7 @@
 
       <div class="field">
         <label class="label" for="phone">Phone Number</label>
-        <div class="control has-icons-left">
+        <div class="control has-text-centered">
           <input
             class="input"
             type="text"
@@ -65,11 +65,11 @@
         </div>
       </div>
 
-      <div class="field is-grouped">
-        <div class="control">
+      <div class="control has-text-centered">
+        <div class="control has-text-centered">
           <button class="button is-link" type="submit">Submit</button>
         </div>
-        <div class="control">
+        <div class="control has-text-centered" style="margin-top: 10px;">
           <button class="button is-link is-light" v-on:click="resetForm">
             Cancel
           </button>
@@ -142,4 +142,17 @@ export default {
 </script>
 
 <style>
+.appform {
+padding: 20px;
+}
+
+.label {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.input {
+  width: 30%;
+}
+
 </style>

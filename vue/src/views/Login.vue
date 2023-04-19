@@ -21,7 +21,7 @@
         <input type="password" id="password" v-model="user.password" required />
         <button type="submit">Sign in</button>
         <p>
-          <router-link :to="{ name: 'register' }"
+          <router-link :to="{ name: 'volunteer' }"
             >Need an account? Sign up.</router-link
           >
         </p>

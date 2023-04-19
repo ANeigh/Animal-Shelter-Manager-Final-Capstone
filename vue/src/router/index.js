@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
+// import Register from '../views/Register.vue'
 import store from '../store/index'
 import Volunteer from '../views/Volunteer.vue'
 import About from '../views/About.vue'
@@ -11,6 +11,7 @@ import AnimalListView from '../views/AnimalListView'
 import AdoptedList from '../views/AdoptedList'
 import VolunteerList from '../views/VolunteerListView'
 import AnimalDetails from '../views/AnimalDetails'
+import ApplicationApproval from '../views/ApplicationApprovalView'
 
 Vue.use(Router)
 
@@ -51,14 +52,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: "/register",
-      name: "register",
-      component: Register,
-      meta: {
-        requiresAuth: false
-      }
-    },
+    // {
+    //   path: "/register",
+    //   name: "register",
+    //   component: Register,
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
     {
       path: "/volunteer",
       name: "volunteer",
@@ -103,6 +104,14 @@ const router = new Router({
       path: "/animaldetails/:animalId",
       name: "animaldetails",
       component: AnimalDetails,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/appapproval",
+      name: "appapproval",
+      component: ApplicationApproval,
       meta: {
         requiresAuth: false
       }

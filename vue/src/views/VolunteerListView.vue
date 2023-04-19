@@ -1,20 +1,21 @@
 <template>
   <section class="volunteerlist">
     <NavBar />
-    <Carousel />
+    <VolunteerDir />
     <Footer />
   </section>
 </template>
 
 <script>
 import NavBar from "../components/NavBar";
-import Carousel from "../components/PetCarousel.vue";
 import Footer from "../components/Footer.vue";
+import VolunteerDir from "../components/VolunteerDir.vue";
+
 export default {
   name: "volunteerlistview",
   components: {
     NavBar,
-    Carousel,
+    VolunteerDir,
     Footer,
   },
 };
@@ -22,10 +23,6 @@ export default {
 
 <style>
 .volunteerlist {
-  background-image: url("https://cataas.com/cat");
-  background-size: 100% 100%;
-  background-position: center;
-  height: 100vh;
-  position: relative;
+  background: #a28f9d;
 }
 </style>

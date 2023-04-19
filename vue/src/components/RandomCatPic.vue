@@ -44,9 +44,9 @@ export default {
     }
   },
   created() {
-    axios.get("https://cataas.com/cat")
+    axios.get("https://random.dog/woof.json")
       .then(response => {
-        this.imageUrl = response.request.responseURL;
+        this.imageUrl = response.data.url;
       })
       .catch(error => console.log(error));
   },

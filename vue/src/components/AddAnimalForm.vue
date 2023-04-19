@@ -256,7 +256,6 @@ export default {
 .container {
   display: flex;
   width: 400px;
-  margin-top: 200px;
   margin-bottom: 20px;
   flex-direction: column;
   align-content: left;

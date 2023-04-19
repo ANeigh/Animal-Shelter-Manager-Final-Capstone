@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="isLoggedIn">
     <div class="container">
       <div class="header">
         <button class="button is-link is-outlined" @click="toggleForm">
@@ -162,6 +162,11 @@ export default {
         url: "",
       },
     };
+  },
+  computed: {
+    isLoggedIn () {
+      return !!this.$store.state.token;
+    }
   },
   methods: {
     openUploadModal() {

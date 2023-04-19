@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ImgDao;
 import com.techelevator.model.Img;
+import com.techelevator.model.ImgDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class ImgController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/imgs")
-    public int createImg(@RequestBody Img img) {
-        return imgDao.create(img.getUrl(),img.getAnimalId());
+    public int createImg(@RequestBody ImgDto imgDto) {
+        return imgDao.create(imgDto.getUrl(),imgDto.getAnimalId());
     }
 }

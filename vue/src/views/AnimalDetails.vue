@@ -1,6 +1,7 @@
 <template>
-  <div class="">
+  <div>
     <nav-bar></nav-bar>
+    <update-animal v-bind:animal="getAnimal"/>
     <animal-detail v-bind:animal="getAnimal"/>
   </div>
 </template>
@@ -9,12 +10,14 @@
 import AnimalDetail from '../components/AnimalDetail.vue';
 
 import NavBar from "../components/NavBar.vue";
+import UpdateAnimal from '../components/UpdateAnimal.vue';
 
 export default {
   name: "animaldetails",
   components: {
     NavBar,
-    AnimalDetail
+    AnimalDetail,
+    UpdateAnimal
   },
   computed: {
     getAnimal() {

@@ -14,7 +14,7 @@ public class    AnimalDto {
     private boolean adopted;
     private String breed;
     private String color;
-    private String[] tags;
+    private String tags;
     private String url;
 
     public int getAddedBy() {
@@ -90,11 +90,11 @@ public class    AnimalDto {
     }
 
     public String getTags() {
-        return String.join(", ", this.tags);
-
+    //    return String.join(", ", this.tags);
+        return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 

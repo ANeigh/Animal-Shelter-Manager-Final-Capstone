@@ -149,7 +149,6 @@ export default {
   name: "add-animal-form",
   data() {
     return {
-      url: '',
       showForm: false,
       newAnimal: {
         name: "",
@@ -162,6 +161,7 @@ export default {
         description: "",
       },
       newImg: {
+        animalId: '',
         url: '',
       },
     };
@@ -193,15 +193,14 @@ export default {
         .createAnimal(this.newAnimal)
         .then((response) => {
           if (response.status === 201) {
-            const animalId = response.data;
-            const newImage = { animalId: animalId, url: this.newImg.url };
+            this.newImg.animalId = response.data;
             imgService
-              .createImg(newImage)
+              .createImg(this.newImg)
               .then((response) => {
                 if (response.status === 201) {
                   const imgId = response.data;
                   const animal = {
-                    animalId: animalId,
+                    animalId: this.newImg.animalId,
                     addedBy: "",
                     name: this.newAnimal.name,
                     type: this.newAnimal.type,
@@ -215,8 +214,8 @@ export default {
                   };
                   const img = {
                     imgId: imgId,
-                    url: newImage.url,
-                    animalId: newImage.animalId,
+                    url: this.newImg.url,
+                    animalId: this.newImg.animalId,
                   };
                   this.$store.commit("ADD_ANIMAL", animal);
                   this.$store.commit("ADD_IMG", img);

@@ -100,6 +100,12 @@ export default new Vuex.Store({
     },
     ADD_IMG(state, img) {
       state.imgs.push(img);
+    },
+    UPDATE_ANIMAL(state, animal) {
+      const newAnimal = state.animals.find(a => a.animalId === animal.animalId);
+      if (newAnimal) {
+        Object.assign(newAnimal, animal.data);
+      }
     }
   }
 })

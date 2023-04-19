@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header">
         <button class="button is-link is-outlined" @click="toggleForm">
-          Add New Pet
+          Update Pet Listing
         </button>
       </div>
       <div class="container" v-if="showForm">
@@ -14,7 +14,7 @@
               class="input"
               type="text"
               placeholder="Text input"
-              v-model="newAnimal.name"
+              v-model="updatedAnimal.name"
             />
           </div>
         </div>
@@ -23,7 +23,7 @@
           <label class="label">Type</label>
           <div class="control">
             <div class="select">
-              <select v-model="newAnimal.type">
+              <select v-model="updatedAnimal.type">
                 <option disabled value="">Please select one</option>
                 <option value="Cat">Cat</option>
                 <option value="Dog">Dog</option>
@@ -38,7 +38,7 @@
           <label class="label">Age</label>
           <div class="control">
             <div class="select">
-              <select v-model="newAnimal.age">
+              <select v-model="updatedAnimal.age">
                 <option disabled value="">Please select one</option>
                 <option value="Baby">Baby</option>
                 <option value="Young">Young</option>
@@ -56,7 +56,7 @@
               class="input"
               type="text"
               placeholder="Text input"
-              v-model="newAnimal.breed"
+              v-model="updatedAnimal.breed"
             />
           </div>
         </div>
@@ -68,7 +68,7 @@
               class="input"
               type="text"
               placeholder="Text input"
-              v-model="newAnimal.gender"
+              v-model="updatedAnimal.gender"
             />
           </div>
         </div>
@@ -80,7 +80,7 @@
               class="input"
               type="text"
               placeholder="Text input"
-              v-model="newAnimal.color"
+              v-model="updatedAnimal.color"
             />
           </div>
         </div>
@@ -92,7 +92,7 @@
               class="input"
               type="text"
               placeholder="Text input"
-              v-model="newAnimal.tags"
+              v-model="updatedAnimal.tags"
             />
           </div>
         </div>
@@ -109,6 +109,10 @@
             />
           </div>-->
         </div>
+        <label class="checkbox">
+          Adopted
+          <input v-model="updatedAnimal.adopted" type="checkbox" />
+        </label>
 
         <div class="field">
           <label class="label">Description</label>
@@ -116,14 +120,20 @@
             <textarea
               class="textarea"
               placeholder="Animal Description"
-              v-model="newAnimal.description"
+              v-model="updatedAnimal.description"
             ></textarea>
           </div>
         </div>
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link" @click.prevent="addNewAnimal">
+            <button
+              class="button is-link"
+              @click.prevent="
+                updateAnimal();
+                toggleForm();
+              "
+            >
               Submit
             </button>
           </div>
@@ -143,22 +153,24 @@ import animalService from "../services/AnimalService";
 import imgService from "../services/ImgService";
 
 export default {
-  name: "add-animal-form",
+  name: "update-animal-form",
+  props: ["animal"],
   data() {
     return {
       showForm: false,
-      newAnimal: {
-        name: "",
-        breed: "",
-        color: "",
-        tags: "",
-        type: "",
-        age: "",
-        gender: "",
-        description: "",
+      updatedAnimal: {
+        name: this.animal.name,
+        breed: this.animal.breed,
+        color: this.animal.color,
+        tags: this.animal.tags,
+        type: this.animal.type,
+        age: this.animal.age,
+        gender: this.animal.gender,
+        adopted: this.animal.adopted,
+        description: this.animal.description,
       },
       newImg: {
-        animalId: "",
+        animalId: this.animal.animalId,
         url: "",
       },
     };
@@ -169,6 +181,22 @@ export default {
     }
   },
   methods: {
+    updateAnimal() {
+      animalService
+        .updateAnimal(this.animal.animalId, this.updatedAnimal)
+        .then((response) => {
+          if (response.status === 200) {
+            this.$store.commit("UPDATE_ANIMAL", this.updatedAnimal);
+            if (this.newImg.url != "") {
+              imgService.createImg(this.newImg).then((response) => {
+                if (response.status === 201) {
+                  this.$store.commit("ADD_IMG", this.newImg);
+                }
+              });
+            }
+          }
+        });
+    },
     openUploadModal() {
       window.cloudinary
         .openUploadWidget(
@@ -188,62 +216,7 @@ export default {
     },
     toggleForm() {
       this.showForm = !this.showForm;
-      this.clearForm();
       this.goToTop();
-    },
-    addNewAnimal() {
-      animalService
-        .createAnimal(this.newAnimal)
-        .then((response) => {
-          if (response.status === 201) {
-            this.newImg.animalId = response.data;
-            imgService
-              .createImg(this.newImg)
-              .then((response) => {
-                if (response.status === 201) {
-                  const imgId = response.data;
-                  const animal = {
-                    animalId: this.newImg.animalId,
-                    addedBy: "",
-                    name: this.newAnimal.name,
-                    type: this.newAnimal.type,
-                    description: this.newAnimal.description,
-                    age: this.newAnimal.age,
-                    gender: this.newAnimal.gender,
-                    adopted: false,
-                    breed: this.newAnimal.breed,
-                    color: this.newAnimal.color,
-                    tags: this.newAnimal.tags,
-                  };
-                  const img = {
-                    imgId: imgId,
-                    url: this.newImg.url,
-                    animalId: this.newImg.animalId,
-                  };
-                  this.$store.commit("ADD_ANIMAL", animal);
-                  this.$store.commit("ADD_IMG", img);
-                  this.clearForm();
-                  this.toggleForm();
-                }
-              })
-              .catch((error) => {
-                this.handleErrorResponse(error, "Error adding new image.");
-              });
-          }
-        })
-        .catch((error) => {
-          this.handleErrorResponse(error, "Error adding new animal.");
-        });
-    },
-    clearForm() {
-      this.newAnimal.name = "";
-      this.newAnimal.breed = "";
-      this.newAnimal.color = "";
-      this.newAnimal.tags = "";
-      this.newAnimal.type = "";
-      this.newAnimal.age = "";
-      this.newAnimal.description = "";
-      this.newImg.url = "";
     },
     goToTop() {
       window.scrollTo(0, 0);

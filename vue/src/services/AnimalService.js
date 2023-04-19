@@ -15,7 +15,7 @@ export default {
     },
 
     updateAnimal(animalID, animal) {
-        return axios.put("/animals/" + animalID, animal);
+        return axios.put("/animals/update/" + animalID, animal);
     },
 
     deleteAnimal(animalID) {

@@ -35,6 +35,7 @@ export default new Vuex.Store({
     ],
     applications: [
       {
+        id: 1,
         firstName: "first",
         lastName: "last",
         email: "email@mail.com",
@@ -44,6 +45,7 @@ export default new Vuex.Store({
         password: "noneshallpass"
       },
       {
+        id: 2,
         firstName: "FName",
         lastName: "LName",
         email: "Email@",
@@ -53,6 +55,7 @@ export default new Vuex.Store({
         password: "assword"
       },
       {
+        id: 3,
         firstName: "Dolly",
         lastName: "Parton",
         email: "ourqueen@thebest.com",

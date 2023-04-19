@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface ApplicationDao {
 
+    List<Application> findAll();
+
     Application findApplicationById (int app_id);
 
     Application findApplicationByUsername (String username);

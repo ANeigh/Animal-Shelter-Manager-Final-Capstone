@@ -1,6 +1,7 @@
 <template>
   
   <section class="content" id="volunteer">
+    <NavBar />
     <div>
       <h2>
       Become a Volunteer
@@ -30,13 +31,15 @@
 import ApplicationForm from "../components/ApplicationForm.vue";
 import VolunteerDir from "../components/VolunteerDir.vue";
 import ApplicationApproval from "../components/ApplicationApproval.vue"
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "volunteer",
   components: {
     ApplicationForm,
     VolunteerDir,
-    ApplicationApproval
+    ApplicationApproval,
+    Footer
   },
   
 };

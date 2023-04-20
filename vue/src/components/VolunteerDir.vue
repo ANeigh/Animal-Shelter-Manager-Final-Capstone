@@ -5,7 +5,7 @@
     <ul style="list-style-type:none">
       <!-- <li>Volunteer test dummy</li> -->
       <!-- <li v-for="user in $store.state.users" v-bind:key="user.username"> -->
-      <li v-for="user in listApplicationUsers" v-bind:key="user.userID">
+      <li class="vd-list" v-for="user in listApplicationUsers" v-bind:key="user.userID">
         <b>Name: {{ user.firstName }} {{ user.lastName }}</b
         ><br />
         Role : {{ user.role }}<br />
@@ -67,7 +67,7 @@ export default {
    align-items: center; 
    font-size: 25px;
    font-family: "sans-serif";
-   height: 70vh;
+   height: 80vh;
 }
 
 .vd-title {
@@ -82,6 +82,20 @@ ul {
 }
 .volunteerdirectory li {
   margin: 30px;
+}
+.vd-list {
+   border-radius: 10px;
+    width: 250px;
+    height: 300px;
+    margin: 20px;
+    background-color: #8BAAAD;
+    transition: transform 0.3s ease-in-out;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+
+}li:hover {
+   transform: scale(1.05);
 }
 
 

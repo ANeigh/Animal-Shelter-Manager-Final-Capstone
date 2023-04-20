@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="adoptedlist">
         <b-carousel id="adopted-pet-carousel">
           <b-carousel-slide v-for="animal in adoptedPets" :key="animal.id">
               <animal-card :animal="animal"></animal-card>

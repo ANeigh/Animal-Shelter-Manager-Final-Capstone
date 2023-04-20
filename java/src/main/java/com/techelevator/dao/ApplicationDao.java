@@ -15,4 +15,6 @@ public interface ApplicationDao {
     Application findApplicationByFullName(String first_name, String last_name);
 
     List<Application> findApplicationsByStatus (String status);
+
+    List<Application> getAllApplications();
 }

@@ -11,26 +11,17 @@ import java.util.List;
 @CrossOrigin
 public class ApplicationController {
 
-    private final ApplicationDao applicationDao;
+    private final ApplicationDao appDao;
 
-    public ApplicationController(ApplicationDao applicationDao) {
-        this.applicationDao = applicationDao;
+    public ApplicationController(ApplicationDao appDao) {
+        this.appDao = appDao;
     }
 
     @GetMapping(path = "/appapproval")
+    public List<Application> getAllApplications() {
+        return appDao.getAllApplications();
+    }
 
 
-
-
-//    private final ApplicationDao appDao;
-//
-//    public ApplicationController(ApplicationDao appDao) {
-//        this.appDao = appDao;
-//    }
-//
-//    @GetMapping(path = "/appapproval")
-//    public List<Application> getAllApplications() {
-//        return appDao.getAllApplications();
-//    }
 
 }

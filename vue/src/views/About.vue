@@ -1,6 +1,6 @@
 <template>
   <section class="about">
-    <RandomCatPic mission="About us" />
+    <RandomCatPic mission="About RESTful Retreat" />
     <div class="content">
       <h2 class="content-title">Our Mission Statement</h2>
       <p>Our mission is to provide a safe

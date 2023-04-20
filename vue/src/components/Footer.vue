@@ -3,20 +3,20 @@
     <div class="quick-links">
       <p class="Ql-title">Quick Links</p>
       <p class="footer-item">
-        <router-link class="navButtons" to="/about">About Us</router-link>
+        <router-link class="navButtonss" to="/about">About Us</router-link>
       </p>
       <p class="footer-item">
-        <router-link class="navButtons" to="/animallist"
+        <router-link class="navButtonss" to="/animallist"
           >Animal List</router-link
         >
       </p>
       <p class="footer-item">
-        <router-link class="navButtons" to="/adoptedlist"
+        <router-link class="navButtonss" to="/adoptedlist"
           >Adopted List</router-link
         >
       </p>
       <p class="footer-item">
-        <router-link class="navButtons" to="/volunteer">Become A Volunteer</router-link>
+        <router-link class="navButtonss" to="/volunteer">Become A Volunteer</router-link>
       </p>
     </div>
     <div class="footer-contact">
@@ -105,5 +105,10 @@
   margin-top: 20px;
   width: 150px;
 }
+
+.navButtonss {
+  color: white;
+}
+
 
 </style>

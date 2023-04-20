@@ -15,6 +15,9 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private String role;
+
+
 
 
 
@@ -50,6 +53,13 @@ public class User {
 
    public void setPassword(String password) {
       this.password = password;
+   }
+   public String getRole() {
+      return role;
+   }
+
+   public void setRole(String role) {
+      this.role = role;
    }
 
    public boolean isActivated() {

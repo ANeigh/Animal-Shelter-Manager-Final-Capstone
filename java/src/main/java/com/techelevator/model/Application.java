@@ -21,12 +21,12 @@ public class Application {
         this.status = status;
     }
 
-    public int getApp_id() {
+    public int getAppId() {
         return appId;
     }
 
-    public void setApp_id(int app_id) {
-        this.appId = app_id;
+    public void setAppId(int appId) {
+        this.appId = appId;
     }
 
     public String getUsername() {
@@ -67,14 +67,6 @@ public class Application {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getAppId() {
-        return appId;
-    }
-
-    public void setAppId(int appId) {
-        this.appId = appId;
     }
 
     public String getPhoneNumber() {

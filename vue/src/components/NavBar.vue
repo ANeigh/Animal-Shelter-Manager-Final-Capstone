@@ -29,17 +29,17 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item">
-            <router-link class="navButtons" to="/about">About Us</router-link>
+            <router-link class="navButtons" v-bind:to="{name: 'about'}">About Us</router-link>
           </a>
 
           <a class="navbar-item">
-            <router-link class="navButtons" to="/animallist"
+            <router-link class="navButtons" v-bind:to="{name: 'animallistview'}"
               >Animal List</router-link
             >
           </a>
 
           <a class="navbar-item">
-            <router-link class="navButtons" to="/adoptedlist"
+            <router-link class="navButtons" v-bind:to="{name: 'adoptedlist'}"
               >Adopted List</router-link
             >
           </a>
@@ -47,7 +47,7 @@
           <a class="navbar-item">
             <router-link
               class="navButtons"
-              to="/volunteerlist"
+              v-bind:to="{name: 'volunteerlist'}"
               v-if="isLoggedIn"
               >Volunteer Directory</router-link
             >
@@ -55,7 +55,7 @@
           <a class="navbar-item">
             <router-link
               class="navButtons"
-              to="/appapproval"
+              v-bind:to="{name: 'appapproval'}"
               v-if="showApplicationListLink"
               >Application List</router-link
             >
@@ -68,7 +68,7 @@
           <div class="buttons">
             <a class="button is-primary">
               <strong>
-                <router-link class="signupbutton" to="/volunteer"
+                <router-link class="signupbutton" v-bind:to="{name: 'volunteer'}"
                   >Sign up to be a Volunteer</router-link
                 >
               </strong>

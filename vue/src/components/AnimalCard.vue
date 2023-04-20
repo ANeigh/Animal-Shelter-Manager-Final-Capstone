@@ -33,7 +33,7 @@ export default {
   width: 250px;
   height: 300px;
   margin: 20px;
-  background-color: #8baaad;
+  background-color: #00d1b2;
   transition: transform 0.3s ease-in-out;
   box-shadow: 
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),

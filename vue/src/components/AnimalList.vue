@@ -1,5 +1,5 @@
 <template>
-  <section class="list-section">
+  <section class="list-section" v-bind:class="{'list-section-margin':!this.$store.state.token}">
     <h1 class="header">Pets Available For Adoption</h1>
 
     <div class="select-filter">
@@ -172,13 +172,19 @@ export default {
   flex-wrap: wrap;
   padding-top: 20px;
   margin-bottom: 20px;
-  background: #f4fff8;
+  background: #F2F3F5;
 }
 .list-section {
-  background: #f4fff8;
-  margin-top: 100px;
+  background: #F2F3F5;
   margin-bottom: 20px;
+  margin-top: -20px;
 }
+
+.list-section-margin {
+      margin-top: 100px;
+
+}
+
 .previous-button {
   margin-left: 50px;
 }

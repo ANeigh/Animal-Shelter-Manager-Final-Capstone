@@ -1,10 +1,11 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ApplicationDao;
+import com.techelevator.model.Animal;
 import com.techelevator.model.Application;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController

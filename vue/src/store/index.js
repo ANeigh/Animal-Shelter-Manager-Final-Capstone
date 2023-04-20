@@ -70,6 +70,7 @@ export default new Vuex.Store({
     user: currentUser || {}
   },
   mutations: {
+    
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);

@@ -11,17 +11,6 @@ import java.util.List;
 @CrossOrigin
 public class ApplicationController {
 
-    private final ApplicationDao applicationDao;
-
-    public ApplicationController(ApplicationDao applicationDao) {
-        this.applicationDao = applicationDao;
-    }
-
-    @GetMapping(path = "/appapproval")
-
-
-
-
 //    private final ApplicationDao appDao;
 //
 //    public ApplicationController(ApplicationDao appDao) {

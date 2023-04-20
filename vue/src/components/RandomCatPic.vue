@@ -6,7 +6,7 @@
     <div class="CatText">
       <p>{{ mission }}</p>
       <p>{{ description }}</p>
-      <p>{{ linkText }}<router-link :to="link">{{ linkLabel }}</router-link></p>
+      <p>{{ linkText }}<router-link :to="link" class="test">{{ linkLabel }}</router-link></p>
     </div>
   </div>
 </template>
@@ -87,6 +87,11 @@ export default {
   width: 60%;
   font-size: 30px;
   font-weight: 500;
-  color: #a28f9d;
+  color:linen;
 }
+.test {
+  color: #08f1ce;
+}
+
+
 </style>

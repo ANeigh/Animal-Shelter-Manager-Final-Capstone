@@ -2,7 +2,6 @@
   <section class="about">
     <RandomCatPic mission="About us" />
     <div class="content">
-      <h1 class="content-title">Welcome to Restful Retreat Shelter!</h1>
       <h2 class="content-title">Our Mission Statement</h2>
       <p>Our mission is to provide a safe
       and loving environment for cats, dogs, birds, and rabbits who have been

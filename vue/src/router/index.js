@@ -89,7 +89,7 @@ const router = new Router({
       name: "adoptedlist",
       component: AdoptedList,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -97,7 +97,7 @@ const router = new Router({
       name: "volunteerlist",
       component: VolunteerList,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -113,7 +113,7 @@ const router = new Router({
       name: "appapproval",
       component: ApplicationApproval,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
 

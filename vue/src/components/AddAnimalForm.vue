@@ -1,12 +1,12 @@
 <template>
-  <section v-if="isLoggedIn">
+  <section class="form-section" v-show="isLoggedIn">
     <div class="container">
       <div class="header">
-        <button class="button is-link is-outlined" @click="toggleForm">
+        <button id ="bulmaSucks" class="button is-primary is-rounded button-color:white" @click="toggleForm">
           Add New Pet
         </button>
       </div>
-      <div class="container" v-if="showForm">
+      <div class="form-container" v-if="showForm">
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
@@ -123,7 +123,7 @@
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link" @click.prevent="addNewAnimal">
+            <button :disabled="checkForm" class="button is-link" @click.prevent="addNewAnimal">
               Submit
             </button>
           </div>
@@ -164,8 +164,16 @@ export default {
     };
   },
   computed: {
-    isLoggedIn () {
+    isLoggedIn() {
       return !!this.$store.state.token;
+    },
+    checkForm() {
+      if (this.newAnimal.name === '' || this.newAnimal.breed === '' || this.newAnimal.color === '' ||
+      this.newAnimal.tags === '' || this.newAnimal.type === '' || this.newAnimal.age === '' || 
+      this.newAnimal.description === '') {
+        return true;
+      }
+      return false;
     }
   },
   methods: {
@@ -222,6 +230,7 @@ export default {
                   };
                   this.$store.commit("ADD_ANIMAL", animal);
                   this.$store.commit("ADD_IMG", img);
+                  alert("Pet listing successfully created!");
                   this.clearForm();
                   this.toggleForm();
                 }
@@ -242,6 +251,7 @@ export default {
       this.newAnimal.tags = "";
       this.newAnimal.type = "";
       this.newAnimal.age = "";
+      this.newAnimal.gender= "";
       this.newAnimal.description = "";
       this.newImg.url = "";
     },
@@ -253,15 +263,18 @@ export default {
 </script>
 
 <style>
-.container {
-  display: flex;
-  width: 400px;
-  margin-top: 200px;
-  margin-bottom: 20px;
-  flex-direction: column;
-  align-content: left;
+.form-section {
+  margin-top: 100px;
+  background: #F2F3F5;
+}
+.input {
+  width: 300px;
 }
 .header {
   text-align: center;
+}
+#bulmaSucks { 
+  color: #235789;
+  font-weight: bold;
 }
 </style>

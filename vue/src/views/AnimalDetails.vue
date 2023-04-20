@@ -3,11 +3,13 @@
     <nav-bar></nav-bar>
     <update-animal v-bind:animal="getAnimal"/>
     <animal-detail v-bind:animal="getAnimal"/>
+    <Footer />
   </div>
 </template>
 
 <script>
 import AnimalDetail from '../components/AnimalDetail.vue';
+import Footer from '../components/Footer.vue';
 
 import NavBar from "../components/NavBar.vue";
 import UpdateAnimal from '../components/UpdateAnimal.vue';
@@ -17,7 +19,8 @@ export default {
   components: {
     NavBar,
     AnimalDetail,
-    UpdateAnimal
+    UpdateAnimal,
+    Footer
   },
   computed: {
     getAnimal() {

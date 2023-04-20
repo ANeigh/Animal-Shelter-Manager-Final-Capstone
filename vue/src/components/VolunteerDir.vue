@@ -3,14 +3,14 @@
   <section class="volunteerdirectory">
     <h1 class="vd-title">Volunteer Directory</h1>
     <ul style="list-style-type:none">
-      <li>Volunteer test dummy</li>
+      <!-- <li>Volunteer test dummy</li> -->
       <!-- <li v-for="user in $store.state.users" v-bind:key="user.username"> -->
-      <li v-for="user in listApplicationUsers" v-bind:key="user.userID">
-        <b>{{ user.firstName }} {{ user.lastName }}</b
+      <li class="vd-list" v-for="user in listApplicationUsers" v-bind:key="user.userID">
+        <b>Name: {{ user.firstName }} {{ user.lastName }}</b
         ><br />
-        {{ user.role }}<br />
-        {{ user.email }}<br />
-        {{ user.phone }}
+        Role : {{ user.role }}<br />
+        Email: {{ user.email }}<br />
+        Phone: {{ user.phone }}
       </li>
     </ul>
   </section>
@@ -61,18 +61,42 @@ export default {
 
 <style>
 .volunteerdirectory {
-   height: 70vh;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-around;
    align-items: center; 
    font-size: 25px;
    font-family: "sans-serif";
+   height: 80vh;
 }
 
 .vd-title {
   font-size: 30px;
   text-decoration: underline;
 }
+
+ul {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+.volunteerdirectory li {
+  margin: 30px;
+}
+.vd-list {
+   border-radius: 10px;
+    width: 250px;
+    height: 300px;
+    margin: 20px;
+    background-color: #8BAAAD;
+    transition: transform 0.3s ease-in-out;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+
+}li:hover {
+   transform: scale(1.05);
+}
+
 
 </style>

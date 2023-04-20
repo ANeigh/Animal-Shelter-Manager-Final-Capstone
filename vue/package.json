@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "cloudinary-vue": "^1.2.4",
     "core-js": "^3.9.1",
+    "swiper": "^9.2.3",
     "vue": "^2.6.12",
     "vue-carousel": "^0.18.0",
     "vue-router": "^3.5.1",

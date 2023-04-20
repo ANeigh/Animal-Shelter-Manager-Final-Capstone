@@ -12,21 +12,15 @@ import java.util.List;
 @CrossOrigin
 public class ApplicationController {
 
-    private final ApplicationDao appDao;
-
-    public ApplicationController(ApplicationDao appDao) {
-        this.appDao = appDao;
-    }
-
-    @GetMapping(path = "/appapproval")
-    public List<Application> getAllApplications() {
-        return appDao.getAllApplications();
-    }
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/")
-    public int createAnimal(@RequestBody Application app) {
-        return appDao.create(app);
-    }
+//    private final ApplicationDao appDao;
+//
+//    public ApplicationController(ApplicationDao appDao) {
+//        this.appDao = appDao;
+//    }
+//
+//    @GetMapping(path = "/appapproval")
+//    public List<Application> getAllApplications() {
+//        return appDao.getAllApplications();
+//    }
 
 }

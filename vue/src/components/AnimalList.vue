@@ -45,8 +45,8 @@
     <div class="animal-container">
       <animal-card
         v-bind:animal="animal"
-        v-for="animal in filteredAnimals"
-        v-bind:key="animal.animalId"
+        v-for="(animal, index) in displayedAnimals"
+        v-bind:key="index"
       />
     </div>
     <nav
@@ -102,22 +102,38 @@ export default {
   computed: {
     filteredAnimals() {
       const animals = this.$store.state.animals;
-      // let filteredAnimals;
-      // if ()
       const filteredAnimals = animals.filter((animal) => !animal.adopted);
-      const perPage = 20;
-      const currentPage = this.currentPage;
-      const startIndex = (currentPage - 1) * perPage;
-      const endIndex = startIndex + perPage;
-      return filteredAnimals.slice(startIndex, endIndex);
+      return filteredAnimals
+        .filter((animal) => {
+          if (
+            this.animalFilter.type &&
+            animal.type !== this.animalFilter.type
+          ) {
+            return false;
+          }
+          if (this.animalFilter.age && animal.age != this.animalFilter.age) {
+            return false;
+          }
+          if (
+            this.animalFilter.gender &&
+            animal.gender !== this.animalFilter.gender
+          ) {
+            return false;
+          }
+          return true;
+        });
     },
     totalPages() {
-      return Math.ceil(this.$store.state.animals.length / this.pageSize);
+      const filteredAnimals = this.filteredAnimals;
+      if (filteredAnimals.length === 0) {
+        return 1
+      }
+      return Math.ceil(filteredAnimals.length / this.pageSize);
     },
     displayedAnimals() {
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
-      return this.$store.state.animals.slice(startIndex, endIndex);
+      return this.filteredAnimals.slice(startIndex, endIndex);
     },
   },
   methods: {
@@ -141,6 +157,11 @@ export default {
       window.scrollTo(0, 0);
     },
   },
+  watch: {
+    filteredAnimals() {
+      this.currentPage = 1;
+    }
+  }
 };
 </script>
 
@@ -151,9 +172,11 @@ export default {
   flex-wrap: wrap;
   padding-top: 20px;
   margin-bottom: 20px;
+  background: #f4fff8;
 }
 .list-section {
   background: #f4fff8;
+  margin-top: 100px;
   margin-bottom: 20px;
 }
 .previous-button {
@@ -163,7 +186,6 @@ export default {
   margin-right: 50px;
 }
 .header {
-  margin-top: 100px;
   font-size: 50px;
   color: #235789;
 }

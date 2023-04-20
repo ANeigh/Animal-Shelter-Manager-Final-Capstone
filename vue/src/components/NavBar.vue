@@ -7,7 +7,7 @@
     >
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <img src="../assets/Job-AnimalShelter.png" width="112" height="56" />
+          <img src="../assets/Job-AnimalShelter.png"/>
           <h1 class="PicText" style="font-size: 1.5rem">
             RESTful Retreat Animal Shelter
           </h1>

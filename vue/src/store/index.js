@@ -20,56 +20,57 @@ export default new Vuex.Store({
   state: {
     animals: [],
     users: [
-      {
-        username: "Email@",
-        role: "Admin"
-      },
-      {
-        username: "email@mail.com",
-        role: "Volunteer"
-      },
-      {
-        username: "ourqueen@thebest.com",
-        role: "Volunteer"
-      }
+      // {
+      //   username: "Email@",
+      //   role: "Admin"
+      // },
+      // {
+      //   username: "email@mail.com",
+      //   role: "Volunteer"
+      // },
+      // {
+      //   username: "ourqueen@thebest.com",
+      //   role: "Volunteer"
+      // }
     ],
     applications: [
-      {
-        id: 1,
-        firstName: "first",
-        lastName: "last",
-        email: "email@mail.com",
-        phone: "number",
-        status: "Rejected",
-        username: "email@mail.com",
-        password: "noneshallpass"
-      },
-      {
-        id: 2,
-        firstName: "FName",
-        lastName: "LName",
-        email: "Email@",
-        phone: "123-456-7890",
-        status: "Approved",
-        username: "Email@",
-        password: "assword"
-      },
-      {
-        id: 3,
-        firstName: "Dolly",
-        lastName: "Parton",
-        email: "ourqueen@thebest.com",
-        phone: "#1",
-        status: "Pending",
-        username: "ourqueen@thebest.com",
-        password: "jolene"
-      }
+      // {
+      //   id: 1,
+      //   firstName: "first",
+      //   lastName: "last",
+      //   email: "email@mail.com",
+      //   phone: "number",
+      //   status: "Rejected",
+      //   username: "email@mail.com",
+      //   password: "noneshallpass"
+      // },
+      // {
+      //   id: 2,
+      //   firstName: "FName",
+      //   lastName: "LName",
+      //   email: "Email@",
+      //   phone: "123-456-7890",
+      //   status: "Approved",
+      //   username: "Email@",
+      //   password: "assword"
+      // },
+      // {
+      //   id: 3,
+      //   firstName: "Dolly",
+      //   lastName: "Parton",
+      //   email: "ourqueen@thebest.com",
+      //   phone: "#1",
+      //   status: "Pending",
+      //   username: "ourqueen@thebest.com",
+      //   password: "jolene"
+      // }
     ],
     imgs: [],
     token: currentToken || '',
     user: currentUser || {}
   },
   mutations: {
+
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
@@ -99,10 +100,10 @@ export default new Vuex.Store({
       app.status = "Pending";
     },
     ADD_NEW_USER(state, newUser) {
-state.users.push(newUser);
+      state.users.push(newUser);
     },
     CHANGE_USER_ROLE(state, user) {
-      user.role = user.role === "Admin" ? "Volunteer": "Admin";
+      user.role = user.role === "Admin" ? "Volunteer" : "Admin";
     },
     SET_ANIMALS(state, animals) {
       state.animals = animals;

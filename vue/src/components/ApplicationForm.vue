@@ -80,6 +80,8 @@
 </template>
 
 <script>
+import ApplicationService from '../services/ApplicationService';
+
 export default {
   data() {
     return {
@@ -116,6 +118,24 @@ export default {
     },
   },
   methods: {
+    addNewApplication() {
+      ApplicationService
+      .createNewApp(this.newApplication)
+      .then((response) => {
+        if (response.status === 201) {
+          const application = {
+            firstName: this.newApplication.firstName,
+            lastName: this.newApplication.lastName,
+            email: this.newApplication.email,
+            phone: this.newApplication.phone,
+            status: '',
+            username: this.newApplication.username,
+            role: '',
+      };
+      this.$store.commit('ADD_APPLICATION', application);
+        }
+      })
+    },
     saveApp() {
       this.newApp.username = this.setUsername;
       this.newUser.username = this.setUsername;
@@ -137,6 +157,7 @@ export default {
         role: "Volunteer",
       };
     },
+    
     resetForm() {
       this.newApp = {
         firstName: "",

@@ -59,10 +59,6 @@ public class JdbcApplicationDao implements ApplicationDao {
         return null;
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> df28c27e27d5b1792bd32b06124481979f93ad9f
     @Override
     public List<Application> getAllApplications() {
         List<Application> apps = new ArrayList<>();

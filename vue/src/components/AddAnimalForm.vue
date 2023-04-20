@@ -265,7 +265,7 @@ export default {
 <style>
 .form-section {
   margin-top: 100px;
-  background: #f4fff8;
+  background: #F2F3F5;
 }
 .input {
   width: 300px;

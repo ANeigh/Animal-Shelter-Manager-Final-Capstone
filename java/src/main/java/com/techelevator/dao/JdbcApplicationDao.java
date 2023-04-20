@@ -27,7 +27,7 @@ public class JdbcApplicationDao implements ApplicationDao {
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            Application app = mapRowToApplication(results);
+            Application app = mapRowToApplications(results);
             applications.add(app);
         }
         return applications;
@@ -59,10 +59,6 @@ public class JdbcApplicationDao implements ApplicationDao {
         return null;
     }
 
-
-    private Application mapRowToApplication(SqlRowSet rs) {
-        Application app = new Application();
-        app.setAppId(rs.getInt("app_id"));
 
     @Override
     public List<Application> getAllApplications() {

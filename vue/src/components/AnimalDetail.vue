@@ -3,12 +3,7 @@
       <div>
     <carousel class="images">
       <slide v-for="(imgs, index) in getAnimalImages(animal.animalId)"
-      v-bind:key="index">
-  <img :src="imgs.url" 
-       @click="toggleImageExpansion(index)" 
-       :class="{ 'expanded': index === expandedIndex }">
-</slide>
-
+      v-bind:key="index"> <img :src="imgs.url"> </slide>
     </carousel>
     <div class="information">
     <p>Breed: {{ animal.breed }}</p>
@@ -35,11 +30,6 @@ export default {
     Carousel,
     Slide,
   },
-  data() {
-  return {
-    expandedIndex: null,
-  };
-},
   methods: {
     getAnimalImages(animalId) {
       const animalImages = this.$store.state.imgs.filter(
@@ -47,9 +37,6 @@ export default {
       );
       return animalImages;
     },
-    toggleImageExpansion(index) {
-    this.expandedIndex = this.expandedIndex === index ? null : index;
-  },
   },
 };
 </script>
@@ -92,21 +79,6 @@ export default {
 .section2 {
     display: flex;
    background-color: #7c909e;
-}
-.slide img {
-  max-width: 100%;
-  max-height: 100%;
-  cursor: pointer;
-}
-
-.slide img.expanded {
-  position: fixed;
-  z-index: 999;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90%;
-  max-height: 90%;
 }
 
 

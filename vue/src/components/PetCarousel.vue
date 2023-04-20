@@ -31,12 +31,12 @@ export default {
   },
   computed: {
     displayedAnimals() {
-  const animals = this.$store.state.animals.filter((a) => a.adopted);
-  const start = this.activeIndex;
-  const end = this.activeIndex + 3;
-  const sortedAnimals = animals.sort((a, b) => b.id - a.id);
-  return sortedAnimals.slice(start, end);
-},
+      const animals = this.$store.state.animals.filter((a) => a.adopted);
+      const start = this.activeIndex;
+      const end = this.activeIndex + 3;
+      const sortedAnimals = animals.sort((a, b) => b.id - a.id);
+      return sortedAnimals.slice(start, end);
+    },
   },
   methods: {
     previousPage() {
@@ -63,6 +63,7 @@ export default {
 .CatImages {
   display: flex;
   justify-content: center;
+  align-items: center;
   background: #a28f9d;
   font-family: "sans-serif";
 }
@@ -70,7 +71,8 @@ export default {
 .Carousel {
   display: flex;
   align-items: center;
-
+  justify-content: center;
+ 
 }
 
 .Images {
@@ -102,7 +104,6 @@ export default {
   font-weight: bold;
   margin-bottom: 16px;
   margin-right: 500px;
-  color:mintcream;
-  
+  color: mintcream;
 }
 </style>

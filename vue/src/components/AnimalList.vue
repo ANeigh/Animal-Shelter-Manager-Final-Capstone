@@ -84,9 +84,10 @@ export default {
   flex-wrap: wrap;
   padding-top: 20px;
   margin-bottom: 20px;
+  background-color: #F2F3F5;
 }
 .list-section {
-    background:#F4FFF8;
+    background:#F2F3F5;
     margin-bottom: 20px;
 }
 .previous-button {

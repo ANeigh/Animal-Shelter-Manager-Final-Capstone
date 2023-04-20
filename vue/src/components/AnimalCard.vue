@@ -28,7 +28,7 @@ export default {
     width: 250px;
     height: 300px;
     margin: 20px;
-    background-color: #8BAAAD;
+    background-color: #00d1b2;
     transition: transform 0.3s ease-in-out;
 }
 .animal-card:hover {

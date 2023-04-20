@@ -1,6 +1,6 @@
 <template>
   <div class="CatImages">
-    <h2>Celebrate Adopted Pets With Us</h2>
+    <h2>Say hello to the newly adopted!</h2>
     <div class="Carousel">
       <button @click="previousPage">&#8249;</button>
       <div class="Images">
@@ -70,12 +70,14 @@ export default {
 .Carousel {
   display: flex;
   align-items: center;
+
 }
 
 .Images {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 .Carousel button {
@@ -101,5 +103,6 @@ export default {
   margin-bottom: 16px;
   margin-right: 500px;
   color:mintcream;
+  
 }
 </style>

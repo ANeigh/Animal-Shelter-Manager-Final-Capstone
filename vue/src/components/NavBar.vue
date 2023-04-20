@@ -9,7 +9,7 @@
         <a class="navbar-item" href="/">
           <img src="../assets/Job-AnimalShelter.png" width="112" height="56" />
           <h1 class="PicText" style="font-size: 1.5rem">
-            Restful Retreat Shelter
+            RESTful Retreat Animal Shelter
           </h1>
         </a>
 
@@ -127,7 +127,8 @@ export default {
 }
 
 .navButtons {
-  margin: 0 10px;
+  margin: 0 auto;
+  color: #2f0a28
 } 
 
 .navButtons:hover {
@@ -167,4 +168,6 @@ export default {
   color: #235789;
   text-decoration: none;
 }
+
+
 </style>

@@ -40,7 +40,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  background: white;
+  background:#a28f9d;
   padding-top: 150px;
 }
 </style>

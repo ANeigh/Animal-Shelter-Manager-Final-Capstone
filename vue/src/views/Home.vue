@@ -2,10 +2,10 @@
   <div class="home">
     <NavBar />
     <RandomCatPic
-      mission="Our Mission"
+      mission="Welcome to RESTful Retreat Animal Shelter!"
       description="Caring for animals and getting them to their furrever home!"
       link="/about"
-      linkText="Click if you want to know more "
+      linkText="Find out more "
       linkLabel="about us"
     />
     <Carousel />  

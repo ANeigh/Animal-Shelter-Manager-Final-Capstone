@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import ApplicationService from '../services/ApplicationService';
+import applicationService from "../services/ApplicationService";
 
 export default {
   data() {
@@ -140,8 +140,17 @@ export default {
       this.newApp.username = this.setUsername;
       this.newUser.username = this.setUsername;
       this.newUser.password = this.setPassword;
-      this.$store.commit("ADD_NEW_APP", this.newApp);
-      this.$store.commit("ADD_NEW_USER", this.newUser);
+      applicationService
+        .createApp(this.newApp)
+        .then((response) => {
+          if (response.status === 201) {
+            this.$store.commit("ADD_NEW_APP", this.newApp);
+            this.$store.commit("ADD_NEW_USER", this.newUser);
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "Error adding new application.");
+        });
       this.newApp = {
         firstName: "",
         lastName: "",

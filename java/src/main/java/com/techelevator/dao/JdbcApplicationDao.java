@@ -12,7 +12,6 @@ import java.util.List;
 @Component
 public class JdbcApplicationDao implements ApplicationDao {
 
-
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcApplicationDao(JdbcTemplate jdbcTemplate) {
@@ -32,7 +31,6 @@ public class JdbcApplicationDao implements ApplicationDao {
         }
         return applications;
     }
-
 
     @Override
     public Application findApplicationById(int appId) {

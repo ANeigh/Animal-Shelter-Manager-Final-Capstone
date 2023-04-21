@@ -2,17 +2,14 @@ import axios from "axios";
 
 export default {
     /* All applications- Pending, Approved, and Declined */
+    /* Displays all but they can be filtered to Pending */
     listAllApps() {
         return axios.get("/volunteer/apps");
     },
 
-      /* Only pending applications*/
-    listPendingApps() {
-        return axios.get("/volunteer/apps/pending");
-    },
 
-    createNewApp(newApp) {
-        return axios.post("/volunteer", newApp);
+    createApp(newApp) {
+        return axios.post("/appapproval", newApp);
     
     },
 

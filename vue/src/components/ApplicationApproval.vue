@@ -133,6 +133,8 @@ of pending applications, but not remove the data from the database.-->
 </template>
 
 <script>
+import applicationService from "../services/ApplicationService";
+
 export default {
   name: "app-list",
   data() {
@@ -237,7 +239,12 @@ export default {
       this.selectedApps.forEach((appID) => {
         const appToChange = this.findAppById(appID);
         appToChange.status = "Approved";
-        this.$store.commit("APPROVE_APP", appToChange);
+        applicationService.updateApp(appID, appToChange).then((response) => {
+            if (response.status === 200) {
+this.$store.commit("APPROVE_APP", appToChange);
+            }
+        })
+        
       });
       this.selectedApps = [];
     },
